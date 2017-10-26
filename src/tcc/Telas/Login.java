@@ -144,13 +144,14 @@ public class Login extends javax.swing.JFrame {
             try {
                 UsuarioDTO usuario = usuarioDAO.autenticaUsuario(usuarioDTO);
                 if (usuario != null) {
-                    MenuUsuario menuUser = new MenuUsuario();
+                    MenuUsuario menuUser = new MenuUsuario(usuario);
                     menuUser.setVisible(true);
                     this.setVisible(false);
                 } else {
                     Mensagem.msgErro("Erro na entrada de dados!");
                 }
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 Mensagem.msgErro("Erro de login de usuário, tente novamente.");
             }
         }

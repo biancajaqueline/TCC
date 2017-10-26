@@ -5,6 +5,8 @@
  */
 package tcc.Telas;
 
+import tcc.UsuarioDTO;
+
 /**
  *
  * @author usuario
@@ -13,10 +15,15 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form Perguntas
+     * @param usuario
      */
-    public MenuUsuario() {
+    public MenuUsuario(UsuarioDTO usuario) {
         initComponents();
+        usuario = new UsuarioDTO();
+        bemVindo.setText("Bem Vindo, " + usuario.getNome()); 
+        
     }
+    UsuarioDTO usuario;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,26 +109,25 @@ public class MenuUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dificil)
+                    .addComponent(medio)
+                    .addComponent(facil)
+                    .addComponent(jLabel2))
+                .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dificil)
-                            .addComponent(medio)
-                            .addComponent(facil)
-                            .addComponent(jLabel2))
-                        .addContainerGap(109, Short.MAX_VALUE))
+                        .addGap(0, 286, Short.MAX_VALUE)
+                        .addComponent(sair)
+                        .addGap(44, 44, 44))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(sair)
-                                .addGap(44, 44, 44))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(realizarProva)
-                            .addComponent(desempenho))
-                        .addGap(55, 55, 55))))
+                        .addGap(35, 35, 35)
+                        .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(realizarProva)
+                    .addComponent(desempenho))
+                .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +173,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
-        Pergunta pergunta = new Pergunta();
+        Pergunta pergunta = new Pergunta(usuario);
         pergunta.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_realizarProvaActionPerformed
 
@@ -180,40 +186,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuUsuario().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bemVindo;

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class UsuarioDAO {
     
@@ -51,15 +52,14 @@ public class UsuarioDAO {
                 + "user=root&password=root";
 
         Connection conn = DriverManager.getConnection(str);
-        String sql = "SELECT ID_USUARIO, LOGIN, SENHA FROM CADASTRO"
+        String sql = "SELECT ID_USUARIO, LOGIN, SENHA FROM USUARIO"
                 + " WHERE LOGIN = ? "
                 + " AND SENHA = ? ";
 
         PreparedStatement p = conn.prepareStatement(sql);
 
-        
         p.setString(1, usuario.getLogin());
-        p.setString(2, usuario.getSenha());
+        p.setString(2, DigestUtils.sha1Hex(usuario.getSenha()));
         ResultSet rs = p.executeQuery();
         UsuarioDTO usuarioDTO = null;
         if (rs.next()) {

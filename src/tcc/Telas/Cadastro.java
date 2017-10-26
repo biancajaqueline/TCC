@@ -10,7 +10,7 @@ import tcc.Util.Mensagem;
 import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
 import tcc.Validacao;
-
+import org.apache.commons.codec.digest.DigestUtils;
 /**
  *
  * @author usuario
@@ -20,9 +20,13 @@ public class Cadastro extends javax.swing.JFrame {
     /**
      * Creates new form Cadastro
      */
-    public Cadastro() {
+    public Cadastro(UsuarioDTO usuario) {
         initComponents();
+        this.usuario = usuario;
+        
     }
+    
+    UsuarioDTO usuario;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,8 +218,8 @@ public class Cadastro extends javax.swing.JFrame {
             UsuarioDTO usuarioDTO = new UsuarioDTO();
             usuarioDTO.setNome(Nome.getText());
             usuarioDTO.setSobrenome(Sobrenome.getText());
-            usuarioDTO.setLogin(NomeUsuario.getText());
-            usuarioDTO.setSenha(String.copyValueOf(senhaUsuario.getPassword()));
+            usuarioDTO.setLogin(NomeUsuario.getText());         
+            usuarioDTO.setSenha(DigestUtils.sha1Hex(String.copyValueOf(senhaUsuario.getPassword())));
             
             if (jRadioButton1.isSelected()) {
                 valSexo = "F";
@@ -229,7 +233,7 @@ public class Cadastro extends javax.swing.JFrame {
             try {
                 usuarioDAO.incluiUsuario(usuarioDTO);
                 Mensagem.msgInfo("Usuário cadastrado no sistema!");
-                MenuUsuario menuUser = new MenuUsuario();
+                MenuUsuario menuUser = new MenuUsuario(usuario);
                 menuUser.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
@@ -241,40 +245,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_confirmarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cadastro().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Nome;
