@@ -3,18 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tcc.Telas;
 
+import java.sql.SQLException;
+import tcc.UsuarioDAO;
+import tcc.UsuarioDTO;
+import tcc.Util.Mensagem;
+import tcc.Util.Validacao;
 
 public class Login extends javax.swing.JFrame {
 
-    /** Creates new form Login */
+    /**
+     * Creates new form Login
+     */
     public Login() {
         initComponents();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -24,9 +29,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         usuario = new javax.swing.JTextField();
-        senha = new javax.swing.JTextField();
         cancelar = new javax.swing.JButton();
         entrar = new javax.swing.JButton();
+        senha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,8 +47,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Senha");
 
         usuario.setToolTipText("Insira seu nome de usuário");
-
-        senha.setToolTipText("Insira sua senha");
 
         cancelar.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
         cancelar.setText("Cancelar");
@@ -103,7 +106,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 104, Short.MAX_VALUE))
+                        .addGap(54, 105, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -133,9 +136,26 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
-        MenuUsuario menuUser = new MenuUsuario();
-        menuUser.setVisible(true);
-        this.setVisible(false);
+        if (Validacao.validaTexto(usuario) && Validacao.validaSenha(senha)) {
+            UsuarioDTO usuarioDTO = new UsuarioDTO();
+            usuarioDTO.setLogin(usuario.getText());
+            usuarioDTO.setSenha(String.copyValueOf(senha.getPassword()));
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            try {
+                UsuarioDTO usuario = usuarioDAO.autenticaUsuario(usuarioDTO);
+                if (usuario != null) {
+                    MenuUsuario menuUser = new MenuUsuario();
+                    menuUser.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    Mensagem.msgErro("Erro na entrada de dados!");
+                }
+            } catch (SQLException ex) {
+                Mensagem.msgErro("Erro de login de usuário, tente novamente.");
+            }
+        }
+
+
     }//GEN-LAST:event_entrarActionPerformed
 
     /**
@@ -180,7 +200,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField senha;
+    private javax.swing.JPasswordField senha;
     private javax.swing.JTextField usuario;
     // End of variables declaration//GEN-END:variables
 
