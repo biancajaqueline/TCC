@@ -29,36 +29,41 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         niveis = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         facil = new javax.swing.JRadioButton();
         medio = new javax.swing.JRadioButton();
         dificil = new javax.swing.JRadioButton();
         realizarProva = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        desempenho = new javax.swing.JButton();
         sair = new javax.swing.JButton();
+        bemVindo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 102));
 
-        jLabel1.setFont(new java.awt.Font("Niagara Engraved", 0, 36)); // NOI18N
-        jLabel1.setText("Bem vindo, Fulano!");
-
+        jLabel2.setFont(new java.awt.Font("Harrington", 0, 18)); // NOI18N
         jLabel2.setText("Escolha o nível desejado para realizar a prova:");
 
+        facil.setBackground(new java.awt.Color(255, 153, 102));
         niveis.add(facil);
+        facil.setFont(new java.awt.Font("Harrington", 0, 18)); // NOI18N
         facil.setText("   Fácil");
         facil.setToolTipText("Nível fácil");
 
+        medio.setBackground(new java.awt.Color(255, 153, 102));
         niveis.add(medio);
+        medio.setFont(new java.awt.Font("Harrington", 0, 18)); // NOI18N
         medio.setText("   Médio");
         medio.setToolTipText("Nível médio");
 
+        dificil.setBackground(new java.awt.Color(255, 153, 102));
         niveis.add(dificil);
+        dificil.setFont(new java.awt.Font("Harrington", 0, 18)); // NOI18N
         dificil.setText("   Difícil");
         dificil.setToolTipText("Nível difícil");
 
+        realizarProva.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
         realizarProva.setText("Realizar Prova");
         realizarProva.setToolTipText("Botão para começar a realização da prova");
         realizarProva.addActionListener(new java.awt.event.ActionListener() {
@@ -67,9 +72,16 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Ver desempenho");
-        jButton2.setToolTipText("Botão para verificar o desempenho através dos gráficos");
+        desempenho.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
+        desempenho.setText("Ver desempenho");
+        desempenho.setToolTipText("Botão para verificar o desempenho através dos gráficos");
+        desempenho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                desempenhoActionPerformed(evt);
+            }
+        });
 
+        sair.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
         sair.setText("Sair");
         sair.setToolTipText("Botão para sair do sistema");
         sair.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +89,11 @@ public class MenuUsuario extends javax.swing.JFrame {
                 sairActionPerformed(evt);
             }
         });
+
+        bemVindo.setEditable(false);
+        bemVindo.setBackground(new java.awt.Color(255, 153, 102));
+        bemVindo.setFont(new java.awt.Font("Forte", 0, 36)); // NOI18N
+        bemVindo.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,31 +108,31 @@ public class MenuUsuario extends javax.swing.JFrame {
                             .addComponent(medio)
                             .addComponent(facil)
                             .addComponent(jLabel2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(109, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(sair)
-                                .addGap(44, 44, 44)))
+                                .addGap(44, 44, 44))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(realizarProva)
-                            .addComponent(jButton2))
+                            .addComponent(desempenho))
                         .addGap(55, 55, 55))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton2))
-                .addGap(29, 29, 29)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(desempenho)
+                    .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
                 .addComponent(jLabel2)
-                .addGap(40, 40, 40)
+                .addGap(28, 28, 28)
                 .addComponent(facil)
                 .addGap(34, 34, 34)
                 .addComponent(medio)
@@ -125,7 +142,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(realizarProva)
                     .addComponent(sair))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -153,6 +170,12 @@ public class MenuUsuario extends javax.swing.JFrame {
         Pergunta pergunta = new Pergunta();
         pergunta.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_realizarProvaActionPerformed
+
+    private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
+        Desempenho desempenhoUser = new Desempenho();
+        desempenhoUser.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_desempenhoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,10 +216,10 @@ public class MenuUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bemVindo;
+    private javax.swing.JButton desempenho;
     private javax.swing.JRadioButton dificil;
     private javax.swing.JRadioButton facil;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton medio;

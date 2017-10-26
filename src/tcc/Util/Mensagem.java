@@ -1,4 +1,4 @@
-package tcc;
+package tcc.Util;
 
 import javax.swing.JOptionPane;
 
