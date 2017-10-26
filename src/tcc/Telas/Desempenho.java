@@ -5,6 +5,8 @@
  */
 package tcc.Telas;
 
+import tcc.UsuarioDTO;
+
 /**
  *
  * @author usuario
@@ -17,6 +19,7 @@ public class Desempenho extends javax.swing.JFrame {
     public Desempenho() {
         initComponents();
     }
+    UsuarioDTO usuario;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +74,7 @@ public class Desempenho extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        MenuUsuario menuUser = new MenuUsuario();
+        MenuUsuario menuUser = new MenuUsuario(usuario);
         menuUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_voltarActionPerformed

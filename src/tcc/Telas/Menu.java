@@ -5,6 +5,8 @@
  */
 package tcc.Telas;
 
+import tcc.UsuarioDTO;
+
 /**
  *
  * @author usuario
@@ -17,6 +19,8 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
     }
+    
+    UsuarioDTO usuario;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,7 +118,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
-        Cadastro cadastroUser = new Cadastro();
+        Cadastro cadastroUser = new Cadastro(usuario);
         cadastroUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_CadastrarActionPerformed
