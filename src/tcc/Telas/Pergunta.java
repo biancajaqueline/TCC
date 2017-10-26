@@ -38,7 +38,7 @@ public class Pergunta extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
         proxima = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        pergunta = new javax.swing.JTextArea();
         desistir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,20 +50,26 @@ public class Pergunta extends javax.swing.JFrame {
 
         alterinativas.add(alternativaA);
         alternativaA.setText("a)");
+        alternativaA.setToolTipText("Opção A");
 
         alterinativas.add(alternativaB);
         alternativaB.setText("b)");
+        alternativaB.setToolTipText("Opção B");
 
         alterinativas.add(alternativaC);
         alternativaC.setText("c)");
+        alternativaC.setToolTipText("Opção C");
 
         alterinativas.add(alternativaD);
         alternativaD.setText("d)");
+        alternativaD.setToolTipText("Opção D");
 
         alterinativas.add(alternativaE);
         alternativaE.setText("e)");
+        alternativaE.setToolTipText("Opção E");
 
         proxima.setText("Próxima");
+        proxima.setToolTipText("Botão para próxima questão");
         proxima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 proximaActionPerformed(evt);
@@ -72,12 +78,14 @@ public class Pergunta extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        pergunta.setEditable(false);
+        pergunta.setColumns(20);
+        pergunta.setRows(5);
+        pergunta.setToolTipText("Pergunta para ser respondida");
+        jScrollPane1.setViewportView(pergunta);
 
         desistir.setText("Desistir");
+        desistir.setToolTipText("Botão para desistir da prova, não contará pontuação nenhuma");
         desistir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 desistirActionPerformed(evt);
@@ -219,7 +227,7 @@ public class Pergunta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea pergunta;
     private javax.swing.JButton proxima;
     // End of variables declaration//GEN-END:variables
 }

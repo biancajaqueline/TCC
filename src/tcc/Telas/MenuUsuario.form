@@ -130,6 +130,7 @@
               <ComponentRef name="niveis"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   F&#xe1;cil"/>
+            <Property name="toolTipText" type="java.lang.String" value="N&#xed;vel f&#xe1;cil"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="medio">
@@ -138,6 +139,7 @@
               <ComponentRef name="niveis"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   M&#xe9;dio"/>
+            <Property name="toolTipText" type="java.lang.String" value="N&#xed;vel m&#xe9;dio"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="dificil">
@@ -146,11 +148,13 @@
               <ComponentRef name="niveis"/>
             </Property>
             <Property name="text" type="java.lang.String" value="   Dif&#xed;cil"/>
+            <Property name="toolTipText" type="java.lang.String" value="N&#xed;vel dif&#xed;cil"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="realizarProva">
           <Properties>
             <Property name="text" type="java.lang.String" value="Realizar Prova"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para come&#xe7;ar a realiza&#xe7;&#xe3;o da prova"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="realizarProvaActionPerformed"/>
@@ -159,11 +163,13 @@
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver desempenho"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para verificar o desempenho atrav&#xe9;s dos gr&#xe1;ficos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="sair">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para sair do sistema"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sairActionPerformed"/>

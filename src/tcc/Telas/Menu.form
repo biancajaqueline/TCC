@@ -109,7 +109,7 @@
           <Font name="Copperplate Gothic Light" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Entrar"/>
-        <Property name="toolTipText" type="java.lang.String" value="Entrar"/>
+        <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para entrar no sistema"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="entrarActionPerformed"/>
@@ -124,7 +124,7 @@
           <Font name="Copperplate Gothic Light" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
-        <Property name="toolTipText" type="java.lang.String" value="Cadastro de usu&#xe1;rio"/>
+        <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para fazer o cadastro do usu&#xe1;rio no sistema"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadastrarActionPerformed"/>

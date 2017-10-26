@@ -66,7 +66,7 @@ public class Menu extends javax.swing.JFrame {
         entrar.setBackground(new java.awt.Color(173, 235, 220));
         entrar.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 14)); // NOI18N
         entrar.setText("Entrar");
-        entrar.setToolTipText("Entrar");
+        entrar.setToolTipText("Botão para entrar no sistema");
         entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrarActionPerformed(evt);
@@ -76,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
         Cadastrar.setBackground(new java.awt.Color(0, 153, 153));
         Cadastrar.setFont(new java.awt.Font("Copperplate Gothic Light", 1, 14)); // NOI18N
         Cadastrar.setText("Cadastrar");
-        Cadastrar.setToolTipText("Cadastro de usuário");
+        Cadastrar.setToolTipText("Botão para fazer o cadastro do usuário no sistema");
         Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadastrarActionPerformed(evt);

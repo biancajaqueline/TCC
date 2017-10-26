@@ -5,6 +5,12 @@
  */
 package tcc.Telas;
 
+import java.sql.SQLException;
+import tcc.Mensagem;
+import tcc.UsuarioDAO;
+import tcc.UsuarioDTO;
+import tcc.Validacao;
+
 /**
  *
  * @author usuario
@@ -35,12 +41,14 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Nome = new javax.swing.JTextField();
-        NomeUsuário = new javax.swing.JTextField();
-        senhaUsuário = new javax.swing.JTextField();
+        NomeUsuario = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jLabel6 = new javax.swing.JLabel();
+        Sobrenome = new javax.swing.JTextField();
+        senhaUsuario = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +65,17 @@ public class Cadastro extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Niagara Engraved", 0, 48)); // NOI18N
         jLabel5.setText("Cadastro");
 
+        Nome.setToolTipText("Insira seu nome");
+        Nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NomeActionPerformed(evt);
+            }
+        });
+
+        NomeUsuario.setToolTipText("Inisira seu nome de usuário");
+
         confirmar.setText("Confirmar");
+        confirmar.setToolTipText("Botão para confirmar cadastro");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmarActionPerformed(evt);
@@ -65,6 +83,7 @@ public class Cadastro extends javax.swing.JFrame {
         });
 
         cancelar.setText("Cancelar");
+        cancelar.setToolTipText("Botão para cancelar cadastro");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
@@ -73,40 +92,50 @@ public class Cadastro extends javax.swing.JFrame {
 
         sexo.add(jRadioButton1);
         jRadioButton1.setText("Feminino");
+        jRadioButton1.setToolTipText("Sexo feminino");
 
         sexo.add(jRadioButton2);
         jRadioButton2.setText("Masculino");
+        jRadioButton2.setToolTipText("Sexo masculino");
+
+        jLabel6.setText("Sobrenome");
+
+        Sobrenome.setToolTipText("Insira seu sobrenome");
+
+        senhaUsuario.setToolTipText("Insira sua senha");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(183, 183, 183))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(71, 71, 71)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cancelar)
                         .addGap(38, 38, 38)
                         .addComponent(confirmar))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                        .addComponent(NomeUsuário)
-                        .addComponent(senhaUsuário))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jRadioButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)))
-                .addContainerGap(110, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(183, 183, 183))
+                        .addComponent(jRadioButton2))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(senhaUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Sobrenome, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                        .addComponent(NomeUsuario, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,20 +146,29 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(NomeUsuário, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(Sobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel2)
+                        .addGap(23, 23, 23))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NomeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(senhaUsuário, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(senhaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmar)
                     .addComponent(cancelar))
@@ -158,10 +196,32 @@ public class Cadastro extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_cancelarActionPerformed
 
+    private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NomeActionPerformed
+
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        MenuUsuario menuUser = new MenuUsuario();
-        menuUser.setVisible(true);
-        this.setVisible(false);    }//GEN-LAST:event_confirmarActionPerformed
+        if (Validacao.validaTexto(Nome) && Validacao.validaTexto(Sobrenome) && Validacao.validaTexto(NomeUsuario) && Validacao.validaSenha(senhaUsuario)) {
+            UsuarioDTO usuarioDTO = new UsuarioDTO();
+            usuarioDTO.setNome(Nome.getText());
+            usuarioDTO.setSobrenome(Sobrenome.getText());
+            usuarioDTO.setLogin(NomeUsuario.getText());
+            usuarioDTO.setSenha(String.copyValueOf(senhaUsuario.getPassword()));
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            try {
+                usuarioDAO.incluiUsuario(usuarioDTO);
+                Mensagem.msgInfo("Usuário cadastrado no sistema!");
+                MenuUsuario menuUser = new MenuUsuario();
+                menuUser.setVisible(true);
+                this.setVisible(false);
+            } catch (SQLException ex) {
+                Mensagem.msgErro("Erro de cadastro de usuário, tente novamente.");
+            }
+
+        }
+
+    }//GEN-LAST:event_confirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +260,8 @@ public class Cadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Nome;
-    private javax.swing.JTextField NomeUsuário;
+    private javax.swing.JTextField NomeUsuario;
+    private javax.swing.JTextField Sobrenome;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton confirmar;
     private javax.swing.JLabel jLabel1;
@@ -208,10 +269,11 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField senhaUsuário;
+    private javax.swing.JPasswordField senhaUsuario;
     private javax.swing.ButtonGroup sexo;
     // End of variables declaration//GEN-END:variables
 }

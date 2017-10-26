@@ -135,6 +135,7 @@
               <ComponentRef name="alterinativas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="a)"/>
+            <Property name="toolTipText" type="java.lang.String" value="Op&#xe7;&#xe3;o A"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="alternativaB">
@@ -143,6 +144,7 @@
               <ComponentRef name="alterinativas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="b)"/>
+            <Property name="toolTipText" type="java.lang.String" value="Op&#xe7;&#xe3;o B"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="alternativaC">
@@ -151,6 +153,7 @@
               <ComponentRef name="alterinativas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="c)"/>
+            <Property name="toolTipText" type="java.lang.String" value="Op&#xe7;&#xe3;o C"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="alternativaD">
@@ -159,6 +162,7 @@
               <ComponentRef name="alterinativas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="d)"/>
+            <Property name="toolTipText" type="java.lang.String" value="Op&#xe7;&#xe3;o D"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="alternativaE">
@@ -167,6 +171,7 @@
               <ComponentRef name="alterinativas"/>
             </Property>
             <Property name="text" type="java.lang.String" value="e)"/>
+            <Property name="toolTipText" type="java.lang.String" value="Op&#xe7;&#xe3;o E"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JProgressBar" name="jProgressBar1">
@@ -174,6 +179,7 @@
         <Component class="javax.swing.JButton" name="proxima">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pr&#xf3;xima"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para pr&#xf3;xima quest&#xe3;o"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="proximaActionPerformed"/>
@@ -191,11 +197,12 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="pergunta">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="toolTipText" type="java.lang.String" value="Pergunta para ser respondida"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -203,6 +210,7 @@
         <Component class="javax.swing.JButton" name="desistir">
           <Properties>
             <Property name="text" type="java.lang.String" value="Desistir"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para desistir da prova, n&#xe3;o contar&#xe1; pontua&#xe7;&#xe3;o nenhuma"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="desistirActionPerformed"/>

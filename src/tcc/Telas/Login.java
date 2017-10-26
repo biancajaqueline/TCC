@@ -39,7 +39,12 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("Senha");
 
+        usuario.setToolTipText("Insira seu nome de usuário");
+
+        senha.setToolTipText("Insira sua senha");
+
         cancelar.setText("Cancelar");
+        cancelar.setToolTipText("Botão para voltar ao menu e cancelar entrada no sistema");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
@@ -47,6 +52,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         entrar.setText("Entrar");
+        entrar.setToolTipText("Botão para entrar no sistema");
         entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entrarActionPerformed(evt);

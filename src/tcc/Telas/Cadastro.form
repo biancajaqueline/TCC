@@ -50,38 +50,40 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="cancelar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="confirmar" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="Nome" pref="150" max="32767" attributes="0"/>
-                          <Component id="NomeUsuário" max="32767" attributes="0"/>
-                          <Component id="senhaUsuário" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" attributes="0">
                           <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="senhaUsuario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Sobrenome" alignment="0" max="32767" attributes="0"/>
+                          <Component id="Nome" alignment="0" pref="150" max="32767" attributes="0"/>
+                          <Component id="NomeUsuario" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="110" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
+                  <EmptySpace pref="75" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -95,23 +97,35 @@
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Nome" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="NomeUsuário" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Sobrenome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="NomeUsuario" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="senhaUsuário" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="senhaUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="97" max="32767" attributes="0"/>
+                  <EmptySpace pref="63" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="confirmar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -151,14 +165,22 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Nome">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Insira seu nome"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomeActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="NomeUsu&#xe1;rio">
-        </Component>
-        <Component class="javax.swing.JTextField" name="senhaUsu&#xe1;rio">
+        <Component class="javax.swing.JTextField" name="NomeUsuario">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Inisira seu nome de usu&#xe1;rio"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="confirmar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para confirmar cadastro"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmarActionPerformed"/>
@@ -167,6 +189,7 @@
         <Component class="javax.swing.JButton" name="cancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para cancelar cadastro"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
@@ -178,6 +201,7 @@
               <ComponentRef name="sexo"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Feminino"/>
+            <Property name="toolTipText" type="java.lang.String" value="Sexo feminino"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton2">
@@ -186,6 +210,22 @@
               <ComponentRef name="sexo"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Masculino"/>
+            <Property name="toolTipText" type="java.lang.String" value="Sexo masculino"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sobrenome"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="Sobrenome">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Insira seu sobrenome"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="senhaUsuario">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Insira sua senha"/>
           </Properties>
         </Component>
       </SubComponents>

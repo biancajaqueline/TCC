@@ -49,14 +49,18 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         niveis.add(facil);
         facil.setText("   Fácil");
+        facil.setToolTipText("Nível fácil");
 
         niveis.add(medio);
         medio.setText("   Médio");
+        medio.setToolTipText("Nível médio");
 
         niveis.add(dificil);
         dificil.setText("   Difícil");
+        dificil.setToolTipText("Nível difícil");
 
         realizarProva.setText("Realizar Prova");
+        realizarProva.setToolTipText("Botão para começar a realização da prova");
         realizarProva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 realizarProvaActionPerformed(evt);
@@ -64,8 +68,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         });
 
         jButton2.setText("Ver desempenho");
+        jButton2.setToolTipText("Botão para verificar o desempenho através dos gráficos");
 
         sair.setText("Sair");
+        sair.setToolTipText("Botão para sair do sistema");
         sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sairActionPerformed(evt);
