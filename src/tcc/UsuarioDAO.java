@@ -13,14 +13,21 @@ public class UsuarioDAO {
                 + "user=root&password=root";
         Connection conn = DriverManager.getConnection(str);
         
-        String sql = "INSERT INTO CADASTRO (ID_USUARIO, NOME, SOBRENOME, LOGIN, SEXO) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CADASTRO (NOME, SOBRENOME, LOGIN, SEXO) VALUES (?, ?, ?, ?, ?)";
         
         PreparedStatement p = conn.prepareStatement(sql);
         
         p.setString(1, usuario.getNome());
         p.setString(2, usuario.getSobrenome());
         p.setString(3, usuario.getLogin());
-        // p.setCharacterStream(4, );
+        p.setString(4, usuario.getSexo());
+        
+        sql = "INSERT INTO USUARIO (LOGIN, SENHA) VALUES (?, ?)";
+        
+        p = conn.prepareStatement(sql);
+        
+        p.setString(1, usuario.getLogin());
+        p.setString(2, usuario.getSenha());
        
         p.execute();        
     }

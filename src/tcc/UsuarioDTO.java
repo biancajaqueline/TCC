@@ -2,9 +2,8 @@ package tcc;
 
 public class UsuarioDTO {
     
-    private String nome, sobrenome, login, senha;
+    private String nome, sobrenome, login, senha, sexo;
     private int id_usuario;
-        private char sexo;
 
     public int getId_usuario() {
         return id_usuario;
@@ -46,11 +45,11 @@ public class UsuarioDTO {
         this.senha = senha;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
     
