@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class UsuarioDAO {
     
@@ -13,21 +14,32 @@ public class UsuarioDAO {
                 + "user=root&password=root";
         Connection conn = DriverManager.getConnection(str);
         
-        String sql = "INSERT INTO CADASTRO (NOME, SOBRENOME, LOGIN, SEXO) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO CADASTRO (NOME, SOBRENOME, SEXO) VALUES (?, ?, ?)";
         
         PreparedStatement p = conn.prepareStatement(sql);
         
         p.setString(1, usuario.getNome());
         p.setString(2, usuario.getSobrenome());
-        p.setString(3, usuario.getLogin());
-        p.setString(4, usuario.getSexo());
+        p.setString(3, usuario.getSexo());
         
-        sql = "INSERT INTO USUARIO (LOGIN, SENHA) VALUES (?, ?)";
+        p.execute();
+        
+        Statement stmt = conn.createStatement();
+        
+        ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID() FROM DUAL");
+        rs.beforeFirst();
+        rs.next();
+        
+        int id = rs.getInt(1);
+        
+        
+        sql = "INSERT INTO USUARIO (ID_USUARIO, LOGIN, SENHA) VALUES (?, ?, ?)";
         
         p = conn.prepareStatement(sql);
         
-        p.setString(1, usuario.getLogin());
-        p.setString(2, usuario.getSenha());
+        p.setInt(1, id);
+        p.setString(2, usuario.getLogin());
+        p.setString(3, usuario.getSenha());
        
         p.execute();        
     }

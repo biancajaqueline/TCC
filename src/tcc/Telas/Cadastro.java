@@ -197,7 +197,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         if (Validacao.validaTexto(Nome) && Validacao.validaTexto(Sobrenome) && Validacao.validaTexto(NomeUsuario) && Validacao.validaSenha(senhaUsuario)) {
-            char valSexo;
+            String valSexo;
             
             UsuarioDTO usuarioDTO = new UsuarioDTO();
             usuarioDTO.setNome(Nome.getText());
@@ -206,10 +206,12 @@ public class Cadastro extends javax.swing.JFrame {
             usuarioDTO.setSenha(String.copyValueOf(senhaUsuario.getPassword()));
             
             if (jRadioButton1.isSelected()) {
-                valSexo = 'F';
+                valSexo = "F";
             } else {
-                valSexo = 'M';
+                valSexo = "M";
             }
+            
+            usuarioDTO.setSexo(valSexo);
 
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             try {
@@ -219,6 +221,7 @@ public class Cadastro extends javax.swing.JFrame {
                 menuUser.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
+                ex.printStackTrace();
                 Mensagem.msgErro("Erro de cadastro de usuário, tente novamente.");
             }
 
