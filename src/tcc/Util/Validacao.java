@@ -1,9 +1,9 @@
-package tcc;
+package tcc.Util;
 
+import tcc.Util.Mensagem;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import tcc.Util.Mensagem;
 
 public class Validacao {
 
@@ -25,12 +25,10 @@ public class Validacao {
         return true;
     }
     
-    public static boolean validaSexo (JRadioButton campo1, JRadioButton campo2) {
-        
-        if (campo1.isSelected() || campo2.isSelected())
-            return true;
-        else
-            Mensagem.msgAviso("É necessário informar um sexo.");
-            return false;
+    public static char validaSexo(JRadioButton campo) {
+        char sexo = 0;
+       // if (Character.copyValueOf(campo.getV))
+       return sexo;
     }
+
 }

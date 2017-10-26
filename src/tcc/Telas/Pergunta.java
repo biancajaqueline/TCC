@@ -45,25 +45,30 @@ public class Pergunta extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Niagara Engraved", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Forte", 0, 48)); // NOI18N
         jLabel1.setText("Pergunta");
 
+        alternativaA.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaA);
         alternativaA.setText("a)");
         alternativaA.setToolTipText("Opção A");
 
+        alternativaB.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaB);
         alternativaB.setText("b)");
         alternativaB.setToolTipText("Opção B");
 
+        alternativaC.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaC);
         alternativaC.setText("c)");
         alternativaC.setToolTipText("Opção C");
 
+        alternativaD.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaD);
         alternativaD.setText("d)");
         alternativaD.setToolTipText("Opção D");
 
+        alternativaE.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaE);
         alternativaE.setText("e)");
         alternativaE.setToolTipText("Opção E");
@@ -84,7 +89,8 @@ public class Pergunta extends javax.swing.JFrame {
         pergunta.setToolTipText("Pergunta para ser respondida");
         jScrollPane1.setViewportView(pergunta);
 
-        desistir.setText("Desistir");
+        desistir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/desistir24.png"))); // NOI18N
+        desistir.setText("  Desistir");
         desistir.setToolTipText("Botão para desistir da prova, não contará pontuação nenhuma");
         desistir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,13 +104,9 @@ public class Pergunta extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(alternativaE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(desistir)
-                        .addGap(18, 18, 18)
-                        .addComponent(proxima)
                         .addGap(55, 55, 55))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,18 +116,24 @@ public class Pergunta extends javax.swing.JFrame {
                             .addComponent(alternativaA))
                         .addGap(495, 495, 495))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(248, 248, 248)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(jLabel1)))
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(desistir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(proxima)
+                .addGap(60, 60, 60))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,11 +151,12 @@ public class Pergunta extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(alternativaD)
                 .addGap(18, 18, 18)
+                .addComponent(alternativaE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(alternativaE)
-                    .addComponent(proxima)
-                    .addComponent(desistir))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                    .addComponent(desistir)
+                    .addComponent(proxima))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
