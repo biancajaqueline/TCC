@@ -44,6 +44,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         desempenho = new javax.swing.JButton();
         sair = new javax.swing.JButton();
         bemVindo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +74,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         dificil.setToolTipText("Nível difícil");
 
         realizarProva.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
-        realizarProva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/prova32.png"))); // NOI18N
+        realizarProva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/play(3).png"))); // NOI18N
         realizarProva.setText("  Realizar Prova");
         realizarProva.setToolTipText("Botão para começar a realização da prova");
         realizarProva.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +84,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         });
 
         desempenho.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
-        desempenho.setText("Ver desempenho");
+        desempenho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/bar-chart.png"))); // NOI18N
+        desempenho.setText("  Ver desempenho");
         desempenho.setToolTipText("Botão para verificar o desempenho através dos gráficos");
         desempenho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +94,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         });
 
         sair.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
-        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar24.png"))); // NOI18N
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/play(1).png"))); // NOI18N
         sair.setText("  Sair");
         sair.setToolTipText("Botão para sair do sistema");
         sair.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +107,12 @@ public class MenuUsuario extends javax.swing.JFrame {
         bemVindo.setBackground(new java.awt.Color(255, 153, 102));
         bemVindo.setFont(new java.awt.Font("Forte", 0, 36)); // NOI18N
         bemVindo.setText("jTextField1");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/tongue.png"))); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/embarrassed.png"))); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/nerd.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,17 +127,24 @@ public class MenuUsuario extends javax.swing.JFrame {
                         .addComponent(realizarProva, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(medio)
-                            .addComponent(facil)
                             .addComponent(jLabel2)
-                            .addComponent(dificil))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(facil)
+                                    .addComponent(dificil)
+                                    .addComponent(medio))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(93, 93, 93))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(desempenho)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(desempenho, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,13 +156,22 @@ public class MenuUsuario extends javax.swing.JFrame {
                     .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(facil))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
-                .addComponent(facil)
-                .addGap(34, 34, 34)
-                .addComponent(medio)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(medio))
                 .addGap(46, 46, 46)
-                .addComponent(dificil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dificil)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(realizarProva, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,9 +182,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +218,10 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JButton desempenho;
     private javax.swing.JRadioButton dificil;
     private javax.swing.JRadioButton facil;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton medio;
     private javax.swing.ButtonGroup niveis;
