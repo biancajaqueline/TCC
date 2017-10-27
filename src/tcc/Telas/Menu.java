@@ -48,7 +48,8 @@ public class Menu extends javax.swing.JFrame {
 
         entrar.setBackground(new java.awt.Color(173, 235, 220));
         entrar.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
-        entrar.setText("Entrar");
+        entrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/login32.png"))); // NOI18N
+        entrar.setText("  Entrar");
         entrar.setToolTipText("Botão para entrar no sistema");
         entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -18,8 +18,8 @@ public class MenuUsuario extends javax.swing.JFrame {
      * @param usuario
      */
     public MenuUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
         initComponents();
-        usuario = new UsuarioDTO();
         bemVindo.setText("Bem Vindo, " + usuario.getNome()); 
         
     }
@@ -71,7 +71,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         dificil.setToolTipText("Nível difícil");
 
         realizarProva.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
-        realizarProva.setText("Realizar Prova");
+        realizarProva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/prova32.png"))); // NOI18N
+        realizarProva.setText("  Realizar Prova");
         realizarProva.setToolTipText("Botão para começar a realização da prova");
         realizarProva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +90,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         });
 
         sair.setFont(new java.awt.Font("Forte", 0, 14)); // NOI18N
-        sair.setText("Sair");
+        sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar24.png"))); // NOI18N
+        sair.setText("  Sair");
         sair.setToolTipText("Botão para sair do sistema");
         sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,28 +108,27 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(87, 87, 87)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dificil)
-                    .addComponent(medio)
-                    .addComponent(facil)
-                    .addComponent(jLabel2))
-                .addContainerGap(109, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 286, Short.MAX_VALUE)
-                        .addComponent(sair)
-                        .addGap(44, 44, 44))
+                        .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(realizarProva, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(medio)
+                            .addComponent(facil)
+                            .addComponent(jLabel2)
+                            .addComponent(dificil))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(realizarProva)
-                    .addComponent(desempenho))
-                .addGap(55, 55, 55))
+                .addGap(93, 93, 93))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(bemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(desempenho)
+                .addGap(57, 57, 57))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,11 +145,11 @@ public class MenuUsuario extends javax.swing.JFrame {
                 .addComponent(medio)
                 .addGap(46, 46, 46)
                 .addComponent(dificil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(realizarProva)
-                    .addComponent(sair))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(realizarProva, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

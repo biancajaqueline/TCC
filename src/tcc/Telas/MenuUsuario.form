@@ -50,34 +50,32 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="dificil" min="-2" max="-2" attributes="0"/>
-                      <Component id="medio" min="-2" max="-2" attributes="0"/>
-                      <Component id="facil" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="109" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="286" max="32767" attributes="0"/>
-                          <Component id="sair" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                          <Component id="sair" min="-2" pref="159" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="realizarProva" min="-2" pref="181" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="bemVindo" min="-2" pref="337" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="medio" min="-2" max="-2" attributes="0"/>
+                              <Component id="facil" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="dificil" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="realizarProva" min="-2" max="-2" attributes="0"/>
-                      <Component id="desempenho" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="bemVindo" min="-2" pref="337" max="-2" attributes="0"/>
+                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <Component id="desempenho" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -97,12 +95,12 @@
                   <Component id="medio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="dificil" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace pref="56" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="realizarProva" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="sair" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sair" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="realizarProva" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -166,7 +164,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Forte" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Realizar Prova"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/prova32.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Realizar Prova"/>
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para come&#xe7;ar a realiza&#xe7;&#xe3;o da prova"/>
           </Properties>
           <Events>
@@ -190,7 +191,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Forte" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/imagens/voltar24.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Sair"/>
             <Property name="toolTipText" type="java.lang.String" value="Bot&#xe3;o para sair do sistema"/>
           </Properties>
           <Events>

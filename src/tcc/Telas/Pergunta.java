@@ -89,8 +89,10 @@ public class Pergunta extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(0, 153, 153));
 
         pergunta.setEditable(false);
+        pergunta.setBackground(new java.awt.Color(0, 153, 153));
         pergunta.setColumns(20);
         pergunta.setRows(5);
+        pergunta.setText("pregunta");
         pergunta.setToolTipText("Pergunta para ser respondida");
         jScrollPane1.setViewportView(pergunta);
 
@@ -110,16 +112,12 @@ public class Pergunta extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(alternativaE)
-                        .addGap(55, 55, 55))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(alternativaD)
-                            .addComponent(alternativaC)
-                            .addComponent(alternativaB)
-                            .addComponent(alternativaA))
-                        .addGap(495, 495, 495))))
+                    .addComponent(alternativaE)
+                    .addComponent(alternativaD)
+                    .addComponent(alternativaC)
+                    .addComponent(alternativaB)
+                    .addComponent(alternativaA))
+                .addGap(495, 495, 495))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,7 +130,7 @@ public class Pergunta extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(211, 211, 211)
                         .addComponent(jLabel1)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(desistir)
