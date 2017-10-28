@@ -141,29 +141,14 @@ public class Pergunta extends javax.swing.JFrame {
         respostaC.setEditable(false);
         respostaC.setBackground(new java.awt.Color(0, 153, 153));
         respostaC.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        respostaC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                respostaCActionPerformed(evt);
-            }
-        });
 
         respostaD.setEditable(false);
         respostaD.setBackground(new java.awt.Color(0, 153, 153));
         respostaD.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        respostaD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                respostaDActionPerformed(evt);
-            }
-        });
 
         respostaE.setEditable(false);
         respostaE.setBackground(new java.awt.Color(0, 153, 153));
         respostaE.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
-        respostaE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                respostaEActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -275,6 +260,10 @@ public class Pergunta extends javax.swing.JFrame {
     }//GEN-LAST:event_desistirActionPerformed
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
+        QuestaoDTO questao = new QuestaoDTO();
+        int resp = questao.getAltCorreta();
+        verificaResposta(resp);
+        
         Pergunta pergunta = null;
         try {
             pergunta = new Pergunta(usuario);
@@ -284,18 +273,26 @@ public class Pergunta extends javax.swing.JFrame {
         pergunta.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_proximaActionPerformed
 
-    private void respostaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respostaCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_respostaCActionPerformed
-
-    private void respostaDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respostaDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_respostaDActionPerformed
-
-    private void respostaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_respostaEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_respostaEActionPerformed
-
+    //nem sei oq eu fiz
+    private void verificaResposta(int altCorreta) {
+        int altEscolhida = 0;
+        if (alternativaA.isSelected()) {
+            altEscolhida = 1;
+        } else if (alternativaB.isSelected()) {
+            altEscolhida = 2;
+        } else if (alternativaC.isSelected()) {
+            altEscolhida = 3;
+        } else if (alternativaD.isSelected()) {
+            altEscolhida = 4;
+        } else if (alternativaE.isSelected()) {
+            altEscolhida = 5;
+        }
+        int pontos = 0;
+        if (altCorreta == altEscolhida) {
+            pontos = pontos + 1;
+            System.out.println(pontos);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup alterinativas;
