@@ -5,6 +5,9 @@
  */
 package tcc.Telas;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tcc.UsuarioDTO;
 
 /**
@@ -198,7 +201,12 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
-        Pergunta pergunta = new Pergunta(usuario);
+        Pergunta pergunta = null;
+        try {
+            pergunta = new Pergunta(usuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
         pergunta.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_realizarProvaActionPerformed
 

@@ -48,8 +48,8 @@ public class Cadastro extends javax.swing.JFrame {
         NomeUsuario = new javax.swing.JTextField();
         confirmar = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        feminino = new javax.swing.JRadioButton();
+        masculino = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
         Sobrenome = new javax.swing.JTextField();
         senhaUsuario = new javax.swing.JPasswordField();
@@ -104,17 +104,17 @@ public class Cadastro extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setBackground(new java.awt.Color(0, 153, 153));
-        sexo.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Harrington", 0, 14)); // NOI18N
-        jRadioButton1.setText("Feminino");
-        jRadioButton1.setToolTipText("Sexo feminino");
+        feminino.setBackground(new java.awt.Color(0, 153, 153));
+        sexo.add(feminino);
+        feminino.setFont(new java.awt.Font("Harrington", 0, 14)); // NOI18N
+        feminino.setText("Feminino");
+        feminino.setToolTipText("Sexo feminino");
 
-        jRadioButton2.setBackground(new java.awt.Color(0, 153, 153));
-        sexo.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Harrington", 0, 14)); // NOI18N
-        jRadioButton2.setText("Masculino");
-        jRadioButton2.setToolTipText("Sexo masculino");
+        masculino.setBackground(new java.awt.Color(0, 153, 153));
+        sexo.add(masculino);
+        masculino.setFont(new java.awt.Font("Harrington", 0, 14)); // NOI18N
+        masculino.setText("Masculino");
+        masculino.setToolTipText("Sexo masculino");
 
         jLabel6.setFont(new java.awt.Font("Harrington", 0, 14)); // NOI18N
         jLabel6.setText("Sobrenome");
@@ -142,9 +142,9 @@ public class Cadastro extends javax.swing.JFrame {
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(feminino)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
+                                .addComponent(masculino))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(senhaUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
                                 .addComponent(NomeUsuario, javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,8 +186,8 @@ public class Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)))
+                        .addComponent(feminino)
+                        .addComponent(masculino)))
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmar)
@@ -222,7 +222,6 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
         if (Validacao.validaTexto(Nome) && Validacao.validaTexto(Sobrenome) && Validacao.validaTexto(NomeUsuario) && Validacao.validaSenha(senhaUsuario)) {
-            String valSexo;
             
             UsuarioDTO usuarioDTO = new UsuarioDTO();
             usuarioDTO.setNome(Nome.getText());
@@ -230,7 +229,8 @@ public class Cadastro extends javax.swing.JFrame {
             usuarioDTO.setLogin(NomeUsuario.getText());         
             usuarioDTO.setSenha(DigestUtils.sha1Hex(String.copyValueOf(senhaUsuario.getPassword())));
             
-            if (jRadioButton1.isSelected()) {
+            String valSexo;
+            if (feminino.isSelected()) {
                 valSexo = "F";
             } else {
                 valSexo = "M";
@@ -246,7 +246,6 @@ public class Cadastro extends javax.swing.JFrame {
                 menuUser.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {
-                ex.printStackTrace();
                 Mensagem.msgErro("Erro de cadastro de usuário, tente novamente.");
             }
 
@@ -262,6 +261,7 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField Sobrenome;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton confirmar;
+    private javax.swing.JRadioButton feminino;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -269,8 +269,7 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton masculino;
     private javax.swing.JPasswordField senhaUsuario;
     private javax.swing.ButtonGroup sexo;
     // End of variables declaration//GEN-END:variables

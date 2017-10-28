@@ -15,10 +15,9 @@ public class QuestaoDAO {
 
         Connection conn = DriverManager.getConnection(str);
         String sql = "SELECT AREA, DESC_QUESTAO, DESC_ALTERNATIVA_1, DESC_ALTERNATIVA_2, DESC_ALTERNATIVA_3, DESC_ALTERNATIVA_4, "
-                + "DESC_ALTERNATIVA_5, IND_CORRETA FROM QUESTAO WHERE ID_QUESTAO = 1";
+                + "DESC_ALTERNATIVA_5, IND_CORRETA FROM QUESTAO ORDER BY RAND() LIMIT 1";
 
         PreparedStatement p = conn.prepareStatement(sql);
-        //p.setInt(9, id);
         ResultSet rs = p.executeQuery();
         QuestaoDTO questaoDTO = null;
         if (rs.next()) {
