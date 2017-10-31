@@ -315,35 +315,43 @@ public class Pergunta extends javax.swing.JFrame {
                     usuario.setPontuacaoA1(p1);
                     break;
                 case 2:
-                    int p2 = usuario.getPontuacaoA2() + pontos;
+                    int p2 = usuario.getPontuacaoA2();
+                    p2++;
                     usuario.setPontuacaoA2(p2);
                     break;
                 case 3:
-                    int p3 = usuario.getPontuacaoA3() + pontos;
+                    int p3 = usuario.getPontuacaoA3();
+                    p3++;
                     usuario.setPontuacaoA3(p3);
                     break;
                 case 4:
-                    int p4 = usuario.getPontuacaoA4() + pontos;
+                    int p4 = usuario.getPontuacaoA4();
+                    p4++;
                     usuario.setPontuacaoA4(p4);
                     break;
                 case 5:
-                    int p5 = usuario.getPontuacaoA5() + pontos;
+                    int p5 = usuario.getPontuacaoA5();
+                    p5++;
                     usuario.setPontuacaoA5(p5);
                     break;
                 case 6:
-                    int p6 = usuario.getPontuacaoA6() + pontos;
+                    int p6 = usuario.getPontuacaoA6();
+                    p6++;
                     usuario.setPontuacaoA6(p6);
                     break;
                 case 7:
-                    int p7 = usuario.getPontuacaoA7() + pontos;
+                    int p7 = usuario.getPontuacaoA7();
+                    p7++;
                     usuario.setPontuacaoA7(p7);
                     break;
                 case 8:
-                    int p8 = usuario.getPontuacaoA8() + pontos;
+                    int p8 = usuario.getPontuacaoA8();
+                    p8++;
                     usuario.setPontuacaoA8(p8);
                     break;
                 case 9:
-                    int p9 = usuario.getPontuacaoA9() + pontos;
+                    int p9 = usuario.getPontuacaoA9();
+                    p9++;
                     usuario.setPontuacaoA9(p9);
                     break;
             }
