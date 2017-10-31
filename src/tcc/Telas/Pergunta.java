@@ -293,7 +293,7 @@ public class Pergunta extends javax.swing.JFrame {
         }
 
         UsuarioDAO uDAO = new UsuarioDAO();
-        uDAO.retornaInfoPontuação(usuario);
+        usuario = uDAO.retornaInfoPontuação(usuario);
         int pontos = usuario.getPontuacaoSessao();
         int pontosGeral = usuario.getPontuacaoGeral();
 
@@ -310,31 +310,41 @@ public class Pergunta extends javax.swing.JFrame {
 
             switch (area) {
                 case 1:
-                    usuario.setPontuacaoA1(pontos);
+                    int p1 = usuario.getPontuacaoA1();
+                    p1++;
+                    usuario.setPontuacaoA1(p1);
                     break;
                 case 2:
-                    usuario.setPontuacaoA2(pontos);
+                    int p2 = usuario.getPontuacaoA2() + pontos;
+                    usuario.setPontuacaoA2(p2);
                     break;
                 case 3:
-                    usuario.setPontuacaoA3(pontos);
+                    int p3 = usuario.getPontuacaoA3() + pontos;
+                    usuario.setPontuacaoA3(p3);
                     break;
                 case 4:
-                    usuario.setPontuacaoA4(pontos);
+                    int p4 = usuario.getPontuacaoA4() + pontos;
+                    usuario.setPontuacaoA4(p4);
                     break;
                 case 5:
-                    usuario.setPontuacaoA5(pontos);
+                    int p5 = usuario.getPontuacaoA5() + pontos;
+                    usuario.setPontuacaoA5(p5);
                     break;
                 case 6:
-                    usuario.setPontuacaoA6(pontos);
+                    int p6 = usuario.getPontuacaoA6() + pontos;
+                    usuario.setPontuacaoA6(p6);
                     break;
                 case 7:
-                    usuario.setPontuacaoA7(pontos);
+                    int p7 = usuario.getPontuacaoA7() + pontos;
+                    usuario.setPontuacaoA7(p7);
                     break;
                 case 8:
-                    usuario.setPontuacaoA8(pontos);
+                    int p8 = usuario.getPontuacaoA8() + pontos;
+                    usuario.setPontuacaoA8(p8);
                     break;
                 case 9:
-                    usuario.setPontuacaoA9(pontos);
+                    int p9 = usuario.getPontuacaoA9() + pontos;
+                    usuario.setPontuacaoA9(p9);
                     break;
             }
             uDAO.atualizaPontuação(usuario);
