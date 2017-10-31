@@ -52,7 +52,7 @@ public class UsuarioDAO {
                 + "user=root&password=root";
 
         Connection conn = DriverManager.getConnection(str);
-        String sql = "SELECT ID_USUARIO, LOGIN, SENHA FROM USUARIO"
+        String sql = "SELECT ID_USUARIO, LOGIN, SENHA, PONTUACAO_GERAL FROM USUARIO"
                 + " WHERE LOGIN = ? "
                 + " AND SENHA = ? ";
 
@@ -67,6 +67,7 @@ public class UsuarioDAO {
             usuarioDTO.setId_usuario(rs.getInt(1));
             usuarioDTO.setNome(rs.getString(2));
             usuarioDTO.setSenha(rs.getString(3));
+            usuarioDTO.setPontuacaoGeral(rs.getInt(4));
         }
         return usuarioDTO;
     }
@@ -103,7 +104,7 @@ public class UsuarioDAO {
                 + "user=root&password=root";
         
         Connection conn = DriverManager.getConnection(str);
-        String sql = "SELECT PONTUACAO_GERAL, PONTUACAO_AREA1, PONTUACAO_AREA2, PONTUACAO_AREA3, PONTUACAO_AREA4, PONTUACAO_AREA5, "
+        String sql = "SELECT PONTUACAO_AREA1, PONTUACAO_AREA2, PONTUACAO_AREA3, PONTUACAO_AREA4, PONTUACAO_AREA5, "
                 + "PONTUACAO_AREA6, PONTUACAO_AREA7, PONTUACAO_AREA8, PONTUACAO_AREA9 FROM USUARIO";
         PreparedStatement p = conn.prepareStatement(sql);
         ResultSet rs = p.executeQuery();
@@ -111,17 +112,17 @@ public class UsuarioDAO {
         
         while (rs.next()) {
             uDTO = new UsuarioDTO();
-            uDTO.setPontuacaoGeral(rs.getInt(1));
-            System.out.println("PONTOS RETORNADOS DO BD    " + rs.getInt(1));
-            uDTO.setPontuacaoA1(rs.getInt(2));
-            uDTO.setPontuacaoA2(rs.getInt(3));
-            uDTO.setPontuacaoA3(rs.getInt(4));
-            uDTO.setPontuacaoA4(rs.getInt(5));
-            uDTO.setPontuacaoA5(rs.getInt(6));
-            uDTO.setPontuacaoA6(rs.getInt(7));
-            uDTO.setPontuacaoA7(rs.getInt(8));
-            uDTO.setPontuacaoA8(rs.getInt(9));
-            uDTO.setPontuacaoA9(rs.getInt(10));
+            //uDTO.setPontuacaoGeral(rs.getInt(1));
+            //System.out.println("PONTOS RETORNADOS DO BD    " + rs.getInt(1));
+            uDTO.setPontuacaoA1(rs.getInt(1));
+            uDTO.setPontuacaoA2(rs.getInt(2));
+            uDTO.setPontuacaoA3(rs.getInt(3));
+            uDTO.setPontuacaoA4(rs.getInt(4));
+            uDTO.setPontuacaoA5(rs.getInt(5));
+            uDTO.setPontuacaoA6(rs.getInt(6));
+            uDTO.setPontuacaoA7(rs.getInt(7));
+            uDTO.setPontuacaoA8(rs.getInt(8));
+            uDTO.setPontuacaoA9(rs.getInt(9));
         }
     }
 }

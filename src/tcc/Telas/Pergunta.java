@@ -291,55 +291,54 @@ public class Pergunta extends javax.swing.JFrame {
         } else if (alternativaE.isSelected()) {
             altEscolhida = 5;
         }
-        
+
         UsuarioDAO uDAO = new UsuarioDAO();
         uDAO.retornaInfoPontuação(usuario);
         int pontos = usuario.getPontuacaoSessao();
         int pontosGeral = usuario.getPontuacaoGeral();
-        
+
         if (altCorreta == altEscolhida) {
             pontos++;
             pontosGeral++;
-            usuario.setPontuacaoSessao(pontos);
             
-        usuario.setPontuacaoGeral(pontosGeral);
-        
-        System.out.println("Pontos sessão    " + pontos);
-        System.out.println("Pontos geral     " + pontos);
-        
-        int area = questao.getArea();
+            usuario.setPontuacaoSessao(pontos);
+            usuario.setPontuacaoGeral(pontosGeral);
+            System.out.println("Pontos sessão    " + pontos);
+            System.out.println("Pontos geral     " + pontos);
 
-        switch (area) {
-            case 1:
-                usuario.setPontuacaoA1(pontos);
-                break;
-            case 2:
-                usuario.setPontuacaoA2(pontos);
-                break;
-            case 3:
-                usuario.setPontuacaoA3(pontos);
-                break;
-            case 4:
-                usuario.setPontuacaoA4(pontos);
-                break;
-            case 5:
-                usuario.setPontuacaoA5(pontos);
-                break;
-            case 6:
-                usuario.setPontuacaoA6(pontos);
-                break;
-            case 7:
-                usuario.setPontuacaoA7(pontos);
-                break;
-            case 8:
-                usuario.setPontuacaoA8(pontos);
-                break;
-            case 9:
-                usuario.setPontuacaoA9(pontos);
-                break;
+            int area = questao.getArea();
+
+            switch (area) {
+                case 1:
+                    usuario.setPontuacaoA1(pontos);
+                    break;
+                case 2:
+                    usuario.setPontuacaoA2(pontos);
+                    break;
+                case 3:
+                    usuario.setPontuacaoA3(pontos);
+                    break;
+                case 4:
+                    usuario.setPontuacaoA4(pontos);
+                    break;
+                case 5:
+                    usuario.setPontuacaoA5(pontos);
+                    break;
+                case 6:
+                    usuario.setPontuacaoA6(pontos);
+                    break;
+                case 7:
+                    usuario.setPontuacaoA7(pontos);
+                    break;
+                case 8:
+                    usuario.setPontuacaoA8(pontos);
+                    break;
+                case 9:
+                    usuario.setPontuacaoA9(pontos);
+                    break;
+            }
+            uDAO.atualizaPontuação(usuario);
         }
-        uDAO.atualizaPontuação(usuario);
-    }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup alterinativas;
