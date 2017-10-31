@@ -6,11 +6,11 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
+import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
 
 /**
@@ -19,14 +19,14 @@ import tcc.UsuarioDTO;
  */
 public class Pergunta extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Escolha
-     */
+    UsuarioDTO usuario;
+    QuestaoDTO questao;
+
     public Pergunta(UsuarioDTO usuario) throws SQLException {
         this.usuario = usuario;
         initComponents();
         QuestaoDAO qDAO = new QuestaoDAO();
-        QuestaoDTO questao = qDAO.retornaPergunta();
+        questao = qDAO.retornaPergunta();
 
         pergunta.setText(questao.getQuestao());
         respostaA.setText(questao.getAlternativaA());
@@ -35,8 +35,6 @@ public class Pergunta extends javax.swing.JFrame {
         respostaD.setText(questao.getAlternativaD());
         respostaE.setText(questao.getAlternativaE());
     }
-
-    UsuarioDTO usuario;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -254,16 +252,21 @@ public class Pergunta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void desistirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desistirActionPerformed
+        usuario.setPontuacaoSessao(0);
         MenuUsuario menuUser = new MenuUsuario(usuario);
         menuUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_desistirActionPerformed
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
-        QuestaoDTO questao = new QuestaoDTO();
+
         int resp = questao.getAltCorreta();
-        verificaResposta(resp);
-        
+        try {
+            verificaResposta(resp);
+        } catch (SQLException ex) {
+            Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         Pergunta pergunta = null;
         try {
             pergunta = new Pergunta(usuario);
@@ -274,8 +277,9 @@ public class Pergunta extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_proximaActionPerformed
 
     //nem sei oq eu fiz
-    private void verificaResposta(int altCorreta) {
+    private void verificaResposta(int altCorreta) throws SQLException {
         int altEscolhida = 0;
+
         if (alternativaA.isSelected()) {
             altEscolhida = 1;
         } else if (alternativaB.isSelected()) {
@@ -287,13 +291,56 @@ public class Pergunta extends javax.swing.JFrame {
         } else if (alternativaE.isSelected()) {
             altEscolhida = 5;
         }
-        int pontos = 0;
+        
+        UsuarioDAO uDAO = new UsuarioDAO();
+        uDAO.retornaInfoPontuação(usuario);
+        int pontos = usuario.getPontuacaoSessao();
+        int pontosGeral = usuario.getPontuacaoGeral();
+        
         if (altCorreta == altEscolhida) {
-            pontos = pontos + 1;
-            System.out.println(pontos);
-        }
-    }
+            pontos++;
+            pontosGeral++;
+            usuario.setPontuacaoSessao(pontos);
+            
+        usuario.setPontuacaoGeral(pontosGeral);
+        
+        System.out.println("Pontos sessão    " + pontos);
+        System.out.println("Pontos geral     " + pontos);
+        
+        int area = questao.getArea();
 
+        switch (area) {
+            case 1:
+                usuario.setPontuacaoA1(pontos);
+                break;
+            case 2:
+                usuario.setPontuacaoA2(pontos);
+                break;
+            case 3:
+                usuario.setPontuacaoA3(pontos);
+                break;
+            case 4:
+                usuario.setPontuacaoA4(pontos);
+                break;
+            case 5:
+                usuario.setPontuacaoA5(pontos);
+                break;
+            case 6:
+                usuario.setPontuacaoA6(pontos);
+                break;
+            case 7:
+                usuario.setPontuacaoA7(pontos);
+                break;
+            case 8:
+                usuario.setPontuacaoA8(pontos);
+                break;
+            case 9:
+                usuario.setPontuacaoA9(pontos);
+                break;
+        }
+        uDAO.atualizaPontuação(usuario);
+    }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup alterinativas;
     private javax.swing.JRadioButton alternativaA;
