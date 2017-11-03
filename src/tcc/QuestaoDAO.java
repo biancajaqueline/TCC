@@ -8,18 +8,29 @@ import java.sql.SQLException;
 
 public class QuestaoDAO {
 
-    public QuestaoDTO retornaPergunta() throws SQLException {
+    public QuestaoDTO retornaPergunta(int nivel) throws SQLException {
 
         String str = "jdbc:mysql://localhost:3307/tcc?"
                 + "user=root&password=root";
 
         Connection conn = DriverManager.getConnection(str);
         String sql = "SELECT AREA, DESC_QUESTAO, DESC_ALTERNATIVA_1, DESC_ALTERNATIVA_2, DESC_ALTERNATIVA_3, DESC_ALTERNATIVA_4, "
-                + "DESC_ALTERNATIVA_5, IND_CORRETA FROM QUESTAO ORDER BY RAND() LIMIT 1";
+                + "DESC_ALTERNATIVA_5, IND_CORRETA FROM QUESTAO WHERE IND_NIVEL = ? ORDER BY RAND() LIMIT 1";
         PreparedStatement p = conn.prepareStatement(sql);
+        p.setInt(1, nivel);
+
+        System.out.println("oi...1");
+
         ResultSet rs = p.executeQuery();
+
+        System.out.println("query: " + p.toString());
+
+        System.out.println("oi...2");
+
         QuestaoDTO questaoDTO = null;
         if (rs.next()) {
+            System.out.println("oi...3");
+
             questaoDTO = new QuestaoDTO();
             questaoDTO.setArea(rs.getInt(1));
             questaoDTO.setQuestao(rs.getString(2));
@@ -32,8 +43,6 @@ public class QuestaoDAO {
             System.out.println("-----------------------------------");
             System.out.println("Alternativa   " + rs.getInt(8));
         }
-        
-
         return questaoDTO;
     }
 }

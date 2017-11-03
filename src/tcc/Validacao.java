@@ -33,4 +33,13 @@ public class Validacao {
             Mensagem.msgAviso("É necessário informar um sexo.");
             return false;
     }
+    
+     public static boolean validaNivel (JRadioButton campo1, JRadioButton campo2, JRadioButton campo3) {
+        
+        if (campo1.isSelected() || campo2.isSelected() || campo3.isSelected())
+            return true;
+        else
+            Mensagem.msgAviso("É necessário informar um nível.");
+            return false;
+    }
 }

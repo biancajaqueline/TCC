@@ -3,7 +3,15 @@ package tcc;
 
 public class QuestaoDTO {
     private String questao, alternativaA, alternativaB, alternativaC, alternativaD, alternativaE;
-    private int area, altCorreta;
+    private int area, altCorreta, nivel;
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
 
     public String getQuestao() {
         return questao;

@@ -21,12 +21,13 @@ public class Pergunta extends javax.swing.JFrame {
 
     UsuarioDTO usuario;
     QuestaoDTO questao;
+    int nivel;
 
-    public Pergunta(UsuarioDTO usuario) throws SQLException {
+    public Pergunta(UsuarioDTO usuario, QuestaoDTO questao, int nivel) throws SQLException {
         this.usuario = usuario;
+        this.questao = questao;
+        this.nivel = nivel;
         initComponents();
-        QuestaoDAO qDAO = new QuestaoDAO();
-        questao = qDAO.retornaPergunta();
 
         pergunta.setText(questao.getQuestao());
         respostaA.setText(questao.getAlternativaA());
@@ -34,7 +35,9 @@ public class Pergunta extends javax.swing.JFrame {
         respostaC.setText(questao.getAlternativaC());
         respostaD.setText(questao.getAlternativaD());
         respostaE.setText(questao.getAlternativaE());
+
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -259,8 +262,15 @@ public class Pergunta extends javax.swing.JFrame {
     }//GEN-LAST:event_desistirActionPerformed
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
-
-        int resp = questao.getAltCorreta();
+        QuestaoDAO qDAO = new QuestaoDAO();
+        QuestaoDTO qDTO = new QuestaoDTO();
+        try {
+            System.out.println(nivel);
+            qDTO = qDAO.retornaPergunta(nivel);
+        } catch (SQLException ex) {
+            Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int resp = qDTO.getAltCorreta();
         try {
             verificaResposta(resp);
         } catch (SQLException ex) {
@@ -269,7 +279,7 @@ public class Pergunta extends javax.swing.JFrame {
 
         Pergunta pergunta = null;
         try {
-            pergunta = new Pergunta(usuario);
+            pergunta = new Pergunta(usuario, questao, nivel);
         } catch (SQLException ex) {
             Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -300,7 +310,7 @@ public class Pergunta extends javax.swing.JFrame {
         if (altCorreta == altEscolhida) {
             pontos++;
             pontosGeral++;
-            
+
             usuario.setPontuacaoSessao(pontos);
             usuario.setPontuacaoGeral(pontosGeral);
             System.out.println("Pontos sessão    " + pontos);

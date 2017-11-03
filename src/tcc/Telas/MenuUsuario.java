@@ -8,7 +8,10 @@ package tcc.Telas;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tcc.QuestaoDAO;
+import tcc.QuestaoDTO;
 import tcc.UsuarioDTO;
+import tcc.Validacao;
 
 /**
  *
@@ -18,15 +21,22 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form Perguntas
+     *
      * @param usuario
      */
+    
+    
+    
     public MenuUsuario(UsuarioDTO usuario) {
         this.usuario = usuario;
         initComponents();
-        bemVindo.setText("Bem Vindo, " + usuario.getNome()); 
-        
+        bemVindo.setText("Bem Vindo, " + usuario.getNome());
+
     }
     UsuarioDTO usuario;
+    QuestaoDTO questao = new QuestaoDTO();
+    int escolha = 0;
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -200,26 +210,50 @@ public class MenuUsuario extends javax.swing.JFrame {
         menu.setVisible(true);
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
-    private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
-        Pergunta pergunta = null;
-        try {
-            pergunta = new Pergunta(usuario);
-        } catch (SQLException ex) {
-            Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        pergunta.setVisible(true);
-        this.setVisible(false);    }//GEN-LAST:event_realizarProvaActionPerformed
-
     private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
         Desempenho desempenhoUser = new Desempenho();
         desempenhoUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_desempenhoActionPerformed
 
+    private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
+        if (Validacao.validaNivel(facil, medio, dificil)) {
+            Pergunta pergunta = null;
+           
+             if (facil.isSelected()) {
+                escolha = 1;
+                questao.setNivel(1);
+            } else if (medio.isSelected()) {
+                escolha = 2;
+                questao.setNivel(2);
+            } else {
+               escolha = 3;
+                questao.setNivel(3);
+            }
+            QuestaoDAO qDAO = new QuestaoDAO();
+            try {
+                questao = qDAO.retornaPergunta(questao.getNivel());
+            } catch (SQLException ex) {
+                Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                pergunta = new Pergunta(usuario, questao, escolha);
+            } catch (SQLException ex) {
+                Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            pergunta.setVisible(true);
+            this.setVisible(false);
+            
+           
+        }
+        
+
+    }//GEN-LAST:event_realizarProvaActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bemVindo;
