@@ -236,8 +236,9 @@ public class MenuUsuario extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
+            int progresso = 5;
             try {
-                pergunta = new Pergunta(usuario, questao, escolha);
+                pergunta = new Pergunta(usuario, questao, escolha, progresso);
             } catch (SQLException ex) {
                 Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }

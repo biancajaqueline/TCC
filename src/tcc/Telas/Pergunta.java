@@ -22,8 +22,9 @@ public class Pergunta extends javax.swing.JFrame {
     UsuarioDTO usuario;
     QuestaoDTO questao;
     int nivel;
+    int progresso;
 
-    public Pergunta(UsuarioDTO usuario, QuestaoDTO questao, int nivel) throws SQLException {
+    public Pergunta(UsuarioDTO usuario, QuestaoDTO questao, int nivel, int progresso) throws SQLException {
         this.usuario = usuario;
         this.questao = questao;
         this.nivel = nivel;
@@ -36,8 +37,10 @@ public class Pergunta extends javax.swing.JFrame {
         respostaD.setText(questao.getAlternativaD());
         respostaE.setText(questao.getAlternativaE());
 
+        barraProgresso.setValue(progresso);
+        progresso = progresso + 5;
+        this.progresso = progresso;
     }
-  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +60,7 @@ public class Pergunta extends javax.swing.JFrame {
         alternativaC = new javax.swing.JRadioButton();
         alternativaD = new javax.swing.JRadioButton();
         alternativaE = new javax.swing.JRadioButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        barraProgresso = new javax.swing.JProgressBar();
         proxima = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         pergunta = new javax.swing.JTextArea();
@@ -101,6 +104,9 @@ public class Pergunta extends javax.swing.JFrame {
         alterinativas.add(alternativaE);
         alternativaE.setText("e)");
         alternativaE.setToolTipText("Opção E");
+
+        barraProgresso.setBackground(new java.awt.Color(255, 204, 153));
+        barraProgresso.setForeground(new java.awt.Color(255, 102, 51));
 
         proxima.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/right-arrow(2).png"))); // NOI18N
         proxima.setToolTipText("Botão para próxima questão");
@@ -162,7 +168,7 @@ public class Pergunta extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(barraProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, 609, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
@@ -232,7 +238,7 @@ public class Pergunta extends javax.swing.JFrame {
                     .addComponent(desistir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(proxima, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(barraProgresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -264,6 +270,7 @@ public class Pergunta extends javax.swing.JFrame {
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
         QuestaoDAO qDAO = new QuestaoDAO();
         QuestaoDTO qDTO = new QuestaoDTO();
+
         try {
             System.out.println(nivel);
             qDTO = qDAO.retornaPergunta(nivel);
@@ -279,7 +286,7 @@ public class Pergunta extends javax.swing.JFrame {
 
         Pergunta pergunta = null;
         try {
-            pergunta = new Pergunta(usuario, questao, nivel);
+            pergunta = new Pergunta(usuario, qDTO, nivel, progresso);
         } catch (SQLException ex) {
             Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -375,11 +382,11 @@ public class Pergunta extends javax.swing.JFrame {
     private javax.swing.JRadioButton alternativaC;
     private javax.swing.JRadioButton alternativaD;
     private javax.swing.JRadioButton alternativaE;
+    private javax.swing.JProgressBar barraProgresso;
     private javax.swing.JButton desistir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea pergunta;
     private javax.swing.JButton proxima;
