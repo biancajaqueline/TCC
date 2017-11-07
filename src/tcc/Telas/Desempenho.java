@@ -5,10 +5,14 @@
  */
 package tcc.Telas;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.chart.XYChart;
 import org.knowm.xchart.QuickChart;
 import org.knowm.xchart.SwingWrapper;
 import tcc.UsuarioDTO;
+import tcc.Util.Mensagem;
 
 public class Desempenho extends javax.swing.JFrame {
 
@@ -21,12 +25,11 @@ public class Desempenho extends javax.swing.JFrame {
 //        org.knowm.xchart.XYChart chart = QuickChart.getChart("Sample Chart", "X", "Y", "y(x)", xData, yData);
 //        
 //    new SwingWrapper(chart).displayChart();
-    
-    
-    desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral());
-    
+
+        desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral());
+
     }
-    
+
     UsuarioDTO usuario;
 
     @SuppressWarnings("unchecked")
@@ -104,9 +107,14 @@ public class Desempenho extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-        MenuUsuario menuUser = new MenuUsuario(usuario);
-        menuUser.setVisible(true);
-        this.setVisible(false);
+
+        try {
+            MenuUsuario menuUser = new MenuUsuario(usuario);
+            menuUser.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Mensagem.msgErro("Erro de conexão com o banco de dados.");
+        }
     }//GEN-LAST:event_voltarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

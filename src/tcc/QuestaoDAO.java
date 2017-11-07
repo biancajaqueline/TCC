@@ -19,17 +19,10 @@ public class QuestaoDAO {
         PreparedStatement p = conn.prepareStatement(sql);
         p.setInt(1, nivel);
 
-        System.out.println("oi...1");
-
         ResultSet rs = p.executeQuery();
-
-        System.out.println("query: " + p.toString());
-
-        System.out.println("oi...2");
-
+        
         QuestaoDTO questaoDTO = null;
         if (rs.next()) {
-            System.out.println("oi...3");
 
             questaoDTO = new QuestaoDTO();
             questaoDTO.setArea(rs.getInt(1));
@@ -41,7 +34,7 @@ public class QuestaoDAO {
             questaoDTO.setAlternativaE(rs.getString(7));
             questaoDTO.setAltCorreta(rs.getInt(8));
             System.out.println("-----------------------------------");
-            System.out.println("Alternativa   " + rs.getInt(8));
+            System.out.println("ALTERNATIVA:     " + rs.getInt(8));
         }
         return questaoDTO;
     }

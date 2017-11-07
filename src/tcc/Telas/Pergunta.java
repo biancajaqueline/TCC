@@ -17,14 +17,17 @@ public class Pergunta extends javax.swing.JFrame {
     int nivel;
     int progresso;
     int i;
+    int pontosSessao;
 
-    public Pergunta(UsuarioDTO usuario, QuestaoDTO questao, int nivel, int progresso, int i) throws SQLException {
+    public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao) throws SQLException {
         this.usuario = usuario;
-        this.questao = questao;
+        //this.questao = questao;
         this.nivel = nivel;
         this.i = i;
+        this.pontosSessao = pontosSessao;
         initComponents();
-
+        QuestaoDAO qDAO = new QuestaoDAO();
+        questao = qDAO.retornaPergunta(nivel);
         pergunta.setText(questao.getQuestao());
         respostaA.setText(questao.getAlternativaA());
         respostaB.setText(questao.getAlternativaB());
@@ -269,48 +272,51 @@ public class Pergunta extends javax.swing.JFrame {
         usuario.setPontSessaoA8(0);
         usuario.setPontSessaoA9(0);
 
-        MenuUsuario menuUser = new MenuUsuario(usuario);
-        menuUser.setVisible(true);
-        this.setVisible(false);
+        try {
+            MenuUsuario menuUser = new MenuUsuario(usuario);
+            menuUser.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Mensagem.msgErro("Erro de conexão com o banco de dados.");
+        }
+
     }//GEN-LAST:event_desistirActionPerformed
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
 
         if (Validacao.validaPergunta(alternativaA, alternativaB, alternativaC, alternativaD, alternativaE)) {
-            QuestaoDAO qDAO = new QuestaoDAO();
-            QuestaoDTO qDTO = new QuestaoDTO();
+//            QuestaoDAO qDAO = new QuestaoDAO();
+//            QuestaoDTO qDTO = new QuestaoDTO();
 
-            try {
-                System.out.println(nivel);
-                qDTO = qDAO.retornaPergunta(nivel);
-            } catch (SQLException ex) {
-                Mensagem.msgErro("Erro de conexão com o banco de dados.");
-            }
-
-            int resp = qDTO.getAltCorreta();
+//            try {
+//                qDTO = qDAO.retornaPergunta(nivel);
+//            } catch (SQLException ex) {
+//                Mensagem.msgErro("Erro de conexão com o banco de dados.");
+//            }
+            int resp = questao.getAltCorreta();
+            System.out.println("RESPOSTA RESP     " + resp);
 
             try {
                 verificaResposta(resp);
             } catch (SQLException ex) {
                 Mensagem.msgErro("Erro de conexão com o banco de dados.");
             }
-            
+
             i++;
-            
+
             if (i <= 5) {
                 try {
-                    Pergunta pergunta = new Pergunta(usuario, qDTO, nivel, progresso, i);
+                    Pergunta pergunta = new Pergunta(usuario, nivel, progresso, i, pontosSessao);
                     pergunta.setVisible(true);
                     this.setVisible(false);
                 } catch (SQLException ex) {
                     Mensagem.msgErro("Erro de conexão com o banco de dados.");
                 }
             } else {
-                DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario);
-                desempenhoUser.setVisible(true);
-                this.setVisible(false);
+                    DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario);
+                    desempenhoUser.setVisible(true);
+                    this.setVisible(false);
             }
-
         }
     }//GEN-LAST:event_proximaActionPerformed
 
@@ -330,20 +336,21 @@ public class Pergunta extends javax.swing.JFrame {
         }
 
         UsuarioDAO uDAO = new UsuarioDAO();
+
         usuario = uDAO.retornaInfoPontuação(usuario);
-        int pontos = usuario.getPontuacaoSessao();
+        //pontosSessao = usuario.getPontuacaoSessao();
         int pontosGeral = usuario.getPontuacaoGeral();
 
         if (altCorreta == altEscolhida) {
-            pontos++;
+            pontosSessao++;
             pontosGeral++;
 
-            usuario.setPontuacaoSessao(pontos);
+            usuario.setPontuacaoSessao(pontosSessao);
             usuario.setPontuacaoGeral(pontosGeral);
-            
-            System.out.println(pontos);
+
+            System.out.println("Pontos sessao     " + pontosSessao);
             System.out.println("pontos geral      " + pontosGeral);
-            
+
             int area = questao.getArea();
 
             switch (area) {
@@ -431,7 +438,6 @@ public class Pergunta extends javax.swing.JFrame {
                     usuario.setPontSessaoA1(ps9);
                     break;
             }
-
             uDAO.atualizaPontuação(usuario);
         }
     }

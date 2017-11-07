@@ -10,7 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
+import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
+import tcc.Util.Mensagem;
 import tcc.Validacao;
 
 /**
@@ -19,17 +21,21 @@ import tcc.Validacao;
  */
 public class MenuUsuario extends javax.swing.JFrame {
 
-    public MenuUsuario(UsuarioDTO usuario) {
-        this.usuario = usuario;
+    public MenuUsuario(UsuarioDTO usuario) throws SQLException {
+        
         initComponents();
         bemVindo.setText("Bem Vindo, " + usuario.getNome());
-
+        UsuarioDAO uDAO = new UsuarioDAO();
+        usuario = uDAO.retornaInfoPontuação(usuario);
+        this.usuario = usuario;
     }
+    
     UsuarioDTO usuario;
     QuestaoDTO questao = new QuestaoDTO();
     int escolha = 0;
     
-    
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -207,40 +213,40 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
         if (Validacao.validaNivel(facil, medio, dificil)) {
-            
+
             Pergunta pergunta = null;
-           
-             if (facil.isSelected()) {
+
+            if (facil.isSelected()) {
                 escolha = 1;
                 questao.setNivel(1);
             } else if (medio.isSelected()) {
                 escolha = 2;
                 questao.setNivel(2);
             } else {
-               escolha = 3;
+                escolha = 3;
                 questao.setNivel(3);
             }
-            QuestaoDAO qDAO = new QuestaoDAO();
-            
-            try {
-                questao = qDAO.retornaPergunta(questao.getNivel());
-            } catch (SQLException ex) {
-                Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+
+//            try {
+//                questao = qDAO.retornaPergunta(escolha);
+//            } catch (SQLException ex) {
+//                Mensagem.msgErro("Erro de conexão com o banco de dados.");
+//            }
+
             int progresso = 5;
             int i = 1;
+            int pontos = 0;
             
             try {
-                pergunta = new Pergunta(usuario, questao, escolha, progresso, i);
+                pergunta = new Pergunta(usuario, escolha, progresso, i, pontos);
+                pergunta.setVisible(true);
+                this.setVisible(false);
             } catch (SQLException ex) {
-                Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Mensagem.msgErro("Erro de conexão com o banco de dados.");
             }
-            
-            pergunta.setVisible(true);
-            this.setVisible(false);
+
         }
-        
+
 
     }//GEN-LAST:event_realizarProvaActionPerformed
 
