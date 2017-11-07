@@ -4,7 +4,79 @@ public class UsuarioDTO {
 
     private String nome, sobrenome, login, senha, sexo;
     private int id_usuario, pontuacaoSessao, pontuacaoGeral, pontuacaoA1, pontuacaoA2, pontuacaoA3, pontuacaoA4, pontuacaoA5, pontuacaoA6, pontuacaoA7, pontuacaoA8, pontuacaoA9;
+    private int pontSessaoA1, pontSessaoA2, pontSessaoA3, pontSessaoA4, pontSessaoA5, pontSessaoA6, pontSessaoA7, pontSessaoA8, pontSessaoA9;
 
+    public int getPontSessaoA1() {
+        return pontSessaoA1;
+    }
+
+    public void setPontSessaoA1(int pontSessaoA1) {
+        this.pontSessaoA1 = pontSessaoA1;
+    }
+
+    public int getPontSessaoA2() {
+        return pontSessaoA2;
+    }
+
+    public void setPontSessaoA2(int pontSessaoA2) {
+        this.pontSessaoA2 = pontSessaoA2;
+    }
+
+    public int getPontSessaoA3() {
+        return pontSessaoA3;
+    }
+
+    public void setPontSessaoA3(int pontSessaoA3) {
+        this.pontSessaoA3 = pontSessaoA3;
+    }
+
+    public int getPontSessaoA4() {
+        return pontSessaoA4;
+    }
+
+    public void setPontSessaoA4(int pontSessaoA4) {
+        this.pontSessaoA4 = pontSessaoA4;
+    }
+
+    public int getPontSessaoA5() {
+        return pontSessaoA5;
+    }
+
+    public void setPontSessaoA5(int pontSessaoA5) {
+        this.pontSessaoA5 = pontSessaoA5;
+    }
+
+    public int getPontSessaoA6() {
+        return pontSessaoA6;
+    }
+
+    public void setPontSessaoA6(int pontSessaoA6) {
+        this.pontSessaoA6 = pontSessaoA6;
+    }
+
+    public int getPontSessaoA7() {
+        return pontSessaoA7;
+    }
+
+    public void setPontSessaoA7(int pontSessaoA7) {
+        this.pontSessaoA7 = pontSessaoA7;
+    }
+
+    public int getPontSessaoA8() {
+        return pontSessaoA8;
+    }
+
+    public void setPontSessaoA8(int pontSessaoA8) {
+        this.pontSessaoA8 = pontSessaoA8;
+    }
+
+    public int getPontSessaoA9() {
+        return pontSessaoA9;
+    }
+
+    public void setPontSessaoA9(int pontSessaoA9) {
+        this.pontSessaoA9 = pontSessaoA9;
+    }
     public int getId_usuario() {
         return id_usuario;
     }

@@ -200,7 +200,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
     private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
-        Desempenho desempenhoUser = new Desempenho();
+        Desempenho desempenhoUser = new Desempenho(usuario);
         desempenhoUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_desempenhoActionPerformed
@@ -229,9 +229,10 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
             
             int progresso = 5;
+            int i = 1;
             
             try {
-                pergunta = new Pergunta(usuario, questao, escolha, progresso);
+                pergunta = new Pergunta(usuario, questao, escolha, progresso, i);
             } catch (SQLException ex) {
                 Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }

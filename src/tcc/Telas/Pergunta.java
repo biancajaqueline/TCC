@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tcc.Telas;
 
 import java.sql.SQLException;
@@ -12,23 +7,22 @@ import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
+import tcc.Util.Mensagem;
 import tcc.Validacao;
 
-/**
- *
- * @author usuario
- */
 public class Pergunta extends javax.swing.JFrame {
 
     UsuarioDTO usuario;
     QuestaoDTO questao;
     int nivel;
     int progresso;
+    int i;
 
-    public Pergunta(UsuarioDTO usuario, QuestaoDTO questao, int nivel, int progresso) throws SQLException {
+    public Pergunta(UsuarioDTO usuario, QuestaoDTO questao, int nivel, int progresso, int i) throws SQLException {
         this.usuario = usuario;
         this.questao = questao;
         this.nivel = nivel;
+        this.i = i;
         initComponents();
 
         pergunta.setText(questao.getQuestao());
@@ -41,6 +35,7 @@ public class Pergunta extends javax.swing.JFrame {
         barraProgresso.setValue(progresso);
         progresso = progresso + 5;
         this.progresso = progresso;
+
     }
 
     /**
@@ -264,12 +259,23 @@ public class Pergunta extends javax.swing.JFrame {
 
     private void desistirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desistirActionPerformed
         usuario.setPontuacaoSessao(0);
+        usuario.setPontSessaoA1(0);
+        usuario.setPontSessaoA2(0);
+        usuario.setPontSessaoA3(0);
+        usuario.setPontSessaoA4(0);
+        usuario.setPontSessaoA5(0);
+        usuario.setPontSessaoA6(0);
+        usuario.setPontSessaoA7(0);
+        usuario.setPontSessaoA8(0);
+        usuario.setPontSessaoA9(0);
+
         MenuUsuario menuUser = new MenuUsuario(usuario);
         menuUser.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_desistirActionPerformed
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
+
         if (Validacao.validaPergunta(alternativaA, alternativaB, alternativaC, alternativaD, alternativaE)) {
             QuestaoDAO qDAO = new QuestaoDAO();
             QuestaoDTO qDTO = new QuestaoDTO();
@@ -278,27 +284,36 @@ public class Pergunta extends javax.swing.JFrame {
                 System.out.println(nivel);
                 qDTO = qDAO.retornaPergunta(nivel);
             } catch (SQLException ex) {
-                Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
+                Mensagem.msgErro("Erro de conexão com o banco de dados.");
             }
+
             int resp = qDTO.getAltCorreta();
+
             try {
                 verificaResposta(resp);
             } catch (SQLException ex) {
-                Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
+                Mensagem.msgErro("Erro de conexão com o banco de dados.");
+            }
+            
+            i++;
+            
+            if (i <= 5) {
+                try {
+                    Pergunta pergunta = new Pergunta(usuario, qDTO, nivel, progresso, i);
+                    pergunta.setVisible(true);
+                    this.setVisible(false);
+                } catch (SQLException ex) {
+                    Mensagem.msgErro("Erro de conexão com o banco de dados.");
+                }
+            } else {
+                DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario);
+                desempenhoUser.setVisible(true);
+                this.setVisible(false);
             }
 
-            Pergunta pergunta = null;
-            try {
-                pergunta = new Pergunta(usuario, qDTO, nivel, progresso);
-            } catch (SQLException ex) {
-                Logger.getLogger(Pergunta.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            pergunta.setVisible(true);
-            this.setVisible(false);
         }
     }//GEN-LAST:event_proximaActionPerformed
 
-    //nem sei oq eu fiz
     private void verificaResposta(int altCorreta) throws SQLException {
         int altEscolhida = 0;
 
@@ -325,58 +340,98 @@ public class Pergunta extends javax.swing.JFrame {
 
             usuario.setPontuacaoSessao(pontos);
             usuario.setPontuacaoGeral(pontosGeral);
-            System.out.println("Pontos sessão    " + pontos);
-            System.out.println("Pontos geral     " + pontos);
-
+            
+            System.out.println(pontos);
+            System.out.println("pontos geral      " + pontosGeral);
+            
             int area = questao.getArea();
 
             switch (area) {
+
                 case 1:
                     int p1 = usuario.getPontuacaoA1();
                     p1++;
                     usuario.setPontuacaoA1(p1);
+                    int ps1 = usuario.getPontSessaoA1();
+                    ps1++;
+                    usuario.setPontSessaoA1(ps1);
                     break;
+
                 case 2:
                     int p2 = usuario.getPontuacaoA2();
                     p2++;
                     usuario.setPontuacaoA2(p2);
+                    int ps2 = usuario.getPontSessaoA2();
+                    ps2++;
+                    usuario.setPontSessaoA2(ps2);
                     break;
+
                 case 3:
                     int p3 = usuario.getPontuacaoA3();
                     p3++;
                     usuario.setPontuacaoA3(p3);
+                    int ps3 = usuario.getPontSessaoA3();
+                    ps3++;
+                    usuario.setPontSessaoA3(ps3);
                     break;
+
                 case 4:
                     int p4 = usuario.getPontuacaoA4();
                     p4++;
                     usuario.setPontuacaoA4(p4);
+
+                    int ps4 = usuario.getPontSessaoA4();
+                    ps4++;
+                    usuario.setPontSessaoA4(ps4);
                     break;
+
                 case 5:
                     int p5 = usuario.getPontuacaoA5();
                     p5++;
                     usuario.setPontuacaoA5(p5);
+                    int ps5 = usuario.getPontSessaoA5();
+                    ps5++;
+                    usuario.setPontSessaoA5(ps5);
                     break;
+
                 case 6:
                     int p6 = usuario.getPontuacaoA6();
                     p6++;
                     usuario.setPontuacaoA6(p6);
+                    int ps6 = usuario.getPontSessaoA6();
+                    ps6++;
+                    usuario.setPontSessaoA6(ps6);
                     break;
+
                 case 7:
                     int p7 = usuario.getPontuacaoA7();
                     p7++;
                     usuario.setPontuacaoA7(p7);
+
+                    int ps7 = usuario.getPontSessaoA7();
+                    ps7++;
+                    usuario.setPontSessaoA7(ps7);
                     break;
+
                 case 8:
                     int p8 = usuario.getPontuacaoA8();
                     p8++;
                     usuario.setPontuacaoA8(p8);
+                    int ps8 = usuario.getPontSessaoA8();
+                    ps8++;
+                    usuario.setPontSessaoA1(ps8);
                     break;
+
                 case 9:
                     int p9 = usuario.getPontuacaoA9();
                     p9++;
                     usuario.setPontuacaoA9(p9);
+                    int ps9 = usuario.getPontSessaoA9();
+                    ps9++;
+                    usuario.setPontSessaoA1(ps9);
                     break;
             }
+
             uDAO.atualizaPontuação(usuario);
         }
     }
