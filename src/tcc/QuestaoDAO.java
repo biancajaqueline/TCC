@@ -58,10 +58,11 @@ public class QuestaoDAO {
             p.setInt(1, nivel);
             p.setInt(2, area);
             p.setInt(3, questoes);
-
+            System.out.println(p.toString());
             ResultSet rs = p.executeQuery();
 
-            QuestaoDTO questaoDTO = null;
+            QuestaoDTO questaoDTO;
+            // não executa
             if (rs.next()) {
                 questaoDTO = new QuestaoDTO();
                 questaoDTO.setQuestao(rs.getString(1));

@@ -19,8 +19,6 @@ public class Pergunta extends javax.swing.JFrame {
     int pontosSessao;
     UsuarioDAO uDAO = new UsuarioDAO();
     QuestaoDAO qDAO = new QuestaoDAO();
-    ArrayList<QuestaoDTO> questoes = qDAO.retornaProva(nivel);
-    
 
     public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao) throws SQLException {
         this.usuario = usuario;
@@ -28,6 +26,7 @@ public class Pergunta extends javax.swing.JFrame {
         this.nivel = nivel;
         this.i = i;
         this.pontosSessao = pontosSessao;
+        ArrayList<QuestaoDTO> questoes = qDAO.retornaProva(nivel);
         initComponents();
         questao = questoes.get(i);
         pergunta.setText(questao.getQuestao());
@@ -36,7 +35,8 @@ public class Pergunta extends javax.swing.JFrame {
         respostaC.setText(questao.getAlternativaC());
         respostaD.setText(questao.getAlternativaD());
         respostaE.setText(questao.getAlternativaE());
-
+        int resp = questao.getAltCorreta();
+        System.out.println("RESPOSTA RESP     " + resp);
         barraProgresso.setValue(progresso);
         progresso = progresso + 5;
         this.progresso = progresso;
