@@ -233,7 +233,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 //            }
 
             int progresso = 5;
-            int i = 1;
+            int i = 0;
             int pontos = 0;
             
             try {

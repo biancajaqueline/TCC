@@ -7,6 +7,7 @@ import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 import tcc.Validacao;
+import java.util.ArrayList;
 
 public class Pergunta extends javax.swing.JFrame {
 
@@ -16,6 +17,10 @@ public class Pergunta extends javax.swing.JFrame {
     int progresso;
     int i;
     int pontosSessao;
+    UsuarioDAO uDAO = new UsuarioDAO();
+    QuestaoDAO qDAO = new QuestaoDAO();
+    ArrayList<QuestaoDTO> questoes = qDAO.retornaProva(nivel);
+    
 
     public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao) throws SQLException {
         this.usuario = usuario;
@@ -24,8 +29,7 @@ public class Pergunta extends javax.swing.JFrame {
         this.i = i;
         this.pontosSessao = pontosSessao;
         initComponents();
-        QuestaoDAO qDAO = new QuestaoDAO();
-        questao = qDAO.retornaPergunta(nivel);
+        questao = questoes.get(i);
         pergunta.setText(questao.getQuestao());
         respostaA.setText(questao.getAlternativaA());
         respostaB.setText(questao.getAlternativaB());
@@ -281,14 +285,6 @@ public class Pergunta extends javax.swing.JFrame {
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
         if (Validacao.validaPergunta(alternativaA, alternativaB, alternativaC, alternativaD, alternativaE)) {
-//            QuestaoDAO qDAO = new QuestaoDAO();
-//            QuestaoDTO qDTO = new QuestaoDTO();
-
-//            try {
-//                qDTO = qDAO.retornaPergunta(nivel);
-//            } catch (SQLException ex) {
-//                Mensagem.msgErro("Erro de conexão com o banco de dados.");
-//            }
             int resp = questao.getAltCorreta();
             System.out.println("RESPOSTA RESP     " + resp);
 
@@ -297,10 +293,17 @@ public class Pergunta extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Mensagem.msgErro("Erro de conexão com o banco de dados.");
             }
+            if (i == 0) {
+                try {
+                    usuario = uDAO.retornaInfoPontuação(usuario);
+                } catch (SQLException ex) {
+                    Mensagem.msgErro("Erro de conexão com o banco de dados.");
+                }
+            }
 
             i++;
 
-            if (i <= 5) {
+            if (i < 6) {
                 try {
                     Pergunta pergunta = new Pergunta(usuario, nivel, progresso, i, pontosSessao);
                     pergunta.setVisible(true);
@@ -309,9 +312,14 @@ public class Pergunta extends javax.swing.JFrame {
                     Mensagem.msgErro("Erro de conexão com o banco de dados.");
                 }
             } else {
+                try {
+                    uDAO.atualizaPontuação(usuario);
                     DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario);
                     desempenhoUser.setVisible(true);
                     this.setVisible(false);
+                } catch (SQLException ex) {
+                    Mensagem.msgErro("Erro de conexão com o banco de dados.");
+                }
             }
         }
     }//GEN-LAST:event_proximaActionPerformed
@@ -331,9 +339,6 @@ public class Pergunta extends javax.swing.JFrame {
             altEscolhida = 5;
         }
 
-        UsuarioDAO uDAO = new UsuarioDAO();
-
-        usuario = uDAO.retornaInfoPontuação(usuario);
         //pontosSessao = usuario.getPontuacaoSessao();
         int pontosGeral = usuario.getPontuacaoGeral();
 
@@ -432,7 +437,6 @@ public class Pergunta extends javax.swing.JFrame {
                     usuario.setPontSessaoA1(ps9);
                     break;
             }
-            uDAO.atualizaPontuação(usuario);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
