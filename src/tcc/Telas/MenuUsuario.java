@@ -6,6 +6,10 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
@@ -226,18 +230,19 @@ public class MenuUsuario extends javax.swing.JFrame {
                 questao.setNivel(3);
             }
 
-//            try {
-//                questao = qDAO.retornaPergunta(escolha);
-//            } catch (SQLException ex) {
-//                Mensagem.msgErro("Erro de conexão com o banco de dados.");
-//            }
-
             int progresso = 5;
             int i = 0;
             int pontos = 0;
+            QuestaoDAO qDAO = new QuestaoDAO();
+            ArrayList<QuestaoDTO> questoes = null;
+            try {
+                questoes = qDAO.retornaProva(escolha);
+            } catch (SQLException ex) {
+                Mensagem.msgErro("Erro de conexão com o banco de dados.");
+            }
             
             try {
-                pergunta = new Pergunta(usuario, escolha, progresso, i, pontos);
+                pergunta = new Pergunta(usuario, escolha, progresso, i, pontos, questoes);
                 pergunta.setVisible(true);
                 this.setVisible(false);
             } catch (SQLException ex) {

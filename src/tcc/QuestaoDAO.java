@@ -48,33 +48,33 @@ public class QuestaoDAO {
             if (area > 7) {
                 questoes = 3;
             }
-            String str = "jdbc:mysql://localhost:3307/tcc?"
-                    + "user=root&password=root";
+            for (int i = 0; i < questoes; i++) {
+                String str = "jdbc:mysql://localhost:3307/tcc?"
+                        + "user=root&password=root";
 
-            Connection conn = DriverManager.getConnection(str);
-            String sql = "SELECT DESC_QUESTAO, DESC_ALTERNATIVA_1, DESC_ALTERNATIVA_2, DESC_ALTERNATIVA_3, DESC_ALTERNATIVA_4, "
-                    + "DESC_ALTERNATIVA_5, IND_CORRETA FROM QUESTAO WHERE IND_NIVEL = ? AND AREA = ? ORDER BY RAND() LIMIT ?";
-            PreparedStatement p = conn.prepareStatement(sql);
-            p.setInt(1, nivel);
-            p.setInt(2, area);
-            p.setInt(3, questoes);
-            System.out.println(p.toString());
-            ResultSet rs = p.executeQuery();
+                Connection conn = DriverManager.getConnection(str);
+                String sql = "SELECT DESC_QUESTAO, DESC_ALTERNATIVA_1, DESC_ALTERNATIVA_2, DESC_ALTERNATIVA_3, DESC_ALTERNATIVA_4, "
+                        + "DESC_ALTERNATIVA_5, IND_CORRETA FROM QUESTAO WHERE IND_NIVEL = ? AND AREA = ? ORDER BY RAND() LIMIT 1";
+                PreparedStatement p = conn.prepareStatement(sql);
+                p.setInt(1, nivel);
+                p.setInt(2, area);
+                System.out.println(p.toString());
+                ResultSet rs = p.executeQuery();
 
-            QuestaoDTO questaoDTO;
-            // não executa
-            if (rs.next()) {
-                questaoDTO = new QuestaoDTO();
-                questaoDTO.setQuestao(rs.getString(1));
-                questaoDTO.setAlternativaA(rs.getString(2));
-                questaoDTO.setAlternativaB(rs.getString(3));
-                questaoDTO.setAlternativaC(rs.getString(4));
-                questaoDTO.setAlternativaD(rs.getString(5));
-                questaoDTO.setAlternativaE(rs.getString(6));
-                questaoDTO.setAltCorreta(rs.getInt(7));
-                listaQuestoes.add(questaoDTO);
+                QuestaoDTO questaoDTO;
+                // não executa
+                if (rs.next()) {
+                    questaoDTO = new QuestaoDTO();
+                    questaoDTO.setQuestao(rs.getString(1));
+                    questaoDTO.setAlternativaA(rs.getString(2));
+                    questaoDTO.setAlternativaB(rs.getString(3));
+                    questaoDTO.setAlternativaC(rs.getString(4));
+                    questaoDTO.setAlternativaD(rs.getString(5));
+                    questaoDTO.setAlternativaE(rs.getString(6));
+                    questaoDTO.setAltCorreta(rs.getInt(7));
+                    listaQuestoes.add(questaoDTO);
+                }
             }
-
             area++;
         } while (area < 10);
 

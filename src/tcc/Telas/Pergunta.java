@@ -19,14 +19,15 @@ public class Pergunta extends javax.swing.JFrame {
     int pontosSessao;
     UsuarioDAO uDAO = new UsuarioDAO();
     QuestaoDAO qDAO = new QuestaoDAO();
+    ArrayList<QuestaoDTO> questoes;
 
-    public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao) throws SQLException {
+    public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao, ArrayList<QuestaoDTO> questoes) throws SQLException {
         this.usuario = usuario;
         //this.questao = questao;
         this.nivel = nivel;
         this.i = i;
         this.pontosSessao = pontosSessao;
-        ArrayList<QuestaoDTO> questoes = qDAO.retornaProva(nivel);
+        this.questoes = questoes;
         initComponents();
         questao = questoes.get(i);
         pergunta.setText(questao.getQuestao());
@@ -36,7 +37,9 @@ public class Pergunta extends javax.swing.JFrame {
         respostaD.setText(questao.getAlternativaD());
         respostaE.setText(questao.getAlternativaE());
         int resp = questao.getAltCorreta();
+        System.out.println("----------------------------------");
         System.out.println("RESPOSTA RESP     " + resp);
+        System.out.println("TAMANHO DO ARRAY    " + questoes.size());
         barraProgresso.setValue(progresso);
         progresso = progresso + 5;
         this.progresso = progresso;
@@ -301,11 +304,10 @@ public class Pergunta extends javax.swing.JFrame {
                 }
             }
 
-            i++;
-
-            if (i < 6) {
+            if (i < 2) {
                 try {
-                    Pergunta pergunta = new Pergunta(usuario, nivel, progresso, i, pontosSessao);
+                    i++;
+                    Pergunta pergunta = new Pergunta(usuario, nivel, progresso, i, pontosSessao, questoes);
                     pergunta.setVisible(true);
                     this.setVisible(false);
                 } catch (SQLException ex) {

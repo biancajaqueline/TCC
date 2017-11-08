@@ -19,22 +19,22 @@ public class Desempenho extends javax.swing.JFrame {
     public Desempenho(UsuarioDTO usuario) {
         initComponents();
         this.usuario = usuario;
- 
-    // Create Chart
-    PieChart chart = new PieChartBuilder().width(800).height(600).title(getClass().getSimpleName()).build();
- 
-    // Customize Chart
-    Color[] sliceColors = new Color[] { new Color(224, 68, 14), new Color(230, 105, 62), new Color(236, 143, 110), new Color(243, 180, 159), new Color(246, 199, 182) };
-    chart.getStyler().setSeriesColors(sliceColors);
- 
-    // Series
-    chart.addSeries("Gold", 24);
-    chart.addSeries("Silver", 21);
-    chart.addSeries("Platinum", 39);
-    chart.addSeries("Copper", 17);
-    chart.addSeries("Zinc", 40);
 
-        //desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral());
+        // Create Chart
+        PieChart chart = new PieChartBuilder().width(800).height(600).title(getClass().getSimpleName()).build();
+
+        // Customize Chart
+        Color[] sliceColors = new Color[]{new Color(224, 68, 14), new Color(230, 105, 62), new Color(236, 143, 110), new Color(243, 180, 159), new Color(246, 199, 182)};
+        chart.getStyler().setSeriesColors(sliceColors);
+
+        // Series
+        chart.addSeries("Gold", 24);
+        chart.addSeries("Silver", 21);
+        chart.addSeries("Platinum", 39);
+        chart.addSeries("Copper", 17);
+        chart.addSeries("Zinc", 40);
+
+        desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral());
 
     }
 
