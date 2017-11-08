@@ -1,8 +1,6 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
@@ -271,7 +269,6 @@ public class Pergunta extends javax.swing.JFrame {
         usuario.setPontSessaoA7(0);
         usuario.setPontSessaoA8(0);
         usuario.setPontSessaoA9(0);
-
         try {
             MenuUsuario menuUser = new MenuUsuario(usuario);
             menuUser.setVisible(true);
@@ -283,7 +280,6 @@ public class Pergunta extends javax.swing.JFrame {
     }//GEN-LAST:event_desistirActionPerformed
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
-
         if (Validacao.validaPergunta(alternativaA, alternativaB, alternativaC, alternativaD, alternativaE)) {
 //            QuestaoDAO qDAO = new QuestaoDAO();
 //            QuestaoDTO qDTO = new QuestaoDTO();
@@ -386,7 +382,6 @@ public class Pergunta extends javax.swing.JFrame {
                     int p4 = usuario.getPontuacaoA4();
                     p4++;
                     usuario.setPontuacaoA4(p4);
-
                     int ps4 = usuario.getPontSessaoA4();
                     ps4++;
                     usuario.setPontSessaoA4(ps4);
@@ -414,7 +409,6 @@ public class Pergunta extends javax.swing.JFrame {
                     int p7 = usuario.getPontuacaoA7();
                     p7++;
                     usuario.setPontuacaoA7(p7);
-
                     int ps7 = usuario.getPontSessaoA7();
                     ps7++;
                     usuario.setPontSessaoA7(ps7);

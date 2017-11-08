@@ -6,9 +6,6 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
@@ -20,6 +17,10 @@ import tcc.Validacao;
  * @author usuario
  */
 public class MenuUsuario extends javax.swing.JFrame {
+    
+    UsuarioDTO usuario;
+    QuestaoDTO questao = new QuestaoDTO();
+    int escolha = 0;
 
     public MenuUsuario(UsuarioDTO usuario) throws SQLException {
         
@@ -30,9 +31,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.usuario = usuario;
     }
     
-    UsuarioDTO usuario;
-    QuestaoDTO questao = new QuestaoDTO();
-    int escolha = 0;
+   
     
 
 
@@ -214,7 +213,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
         if (Validacao.validaNivel(facil, medio, dificil)) {
 
-            Pergunta pergunta = null;
+            Pergunta pergunta;
 
             if (facil.isSelected()) {
                 escolha = 1;

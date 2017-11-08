@@ -102,25 +102,26 @@ public class UsuarioDAO {
                 + "user=root&password=root";
         
         Connection conn = DriverManager.getConnection(str);
-        String sql = "SELECT PONTUACAO_GERAL, PONTUACAO_AREA1, PONTUACAO_AREA2, PONTUACAO_AREA3, PONTUACAO_AREA4, PONTUACAO_AREA5, "
-                + "PONTUACAO_AREA6, PONTUACAO_AREA7, PONTUACAO_AREA8, PONTUACAO_AREA9 FROM USUARIO";
+        String sql = "SELECT C.NOME, U.PONTUACAO_GERAL, U.PONTUACAO_AREA1, U.PONTUACAO_AREA2, U.PONTUACAO_AREA3, U.PONTUACAO_AREA4, U.PONTUACAO_AREA5, U.PONTUACAO_AREA6, U.PONTUACAO_AREA7," +
+                 " U.PONTUACAO_AREA8, U.PONTUACAO_AREA9 FROM CADASTRO C INNER JOIN USUARIO U ON C.ID_USUARIO = U.ID_USUARIO";
         PreparedStatement p = conn.prepareStatement(sql);
         ResultSet rs = p.executeQuery();
         UsuarioDTO uDTO = null;
         
         while (rs.next()) {
             uDTO = new UsuarioDTO();
-            uDTO.setPontuacaoGeral(rs.getInt(1));
-            System.out.println("PONTOS RETORNADOS DO BD    " + rs.getInt(1));
-            uDTO.setPontuacaoA1(rs.getInt(2));
-            uDTO.setPontuacaoA2(rs.getInt(3));
-            uDTO.setPontuacaoA3(rs.getInt(4));
-            uDTO.setPontuacaoA4(rs.getInt(5));
-            uDTO.setPontuacaoA5(rs.getInt(6));
-            uDTO.setPontuacaoA6(rs.getInt(7));
-            uDTO.setPontuacaoA7(rs.getInt(8));
-            uDTO.setPontuacaoA8(rs.getInt(9));
-            uDTO.setPontuacaoA9(rs.getInt(10));
+            uDTO.setNome(rs.getString(1));
+            uDTO.setPontuacaoGeral(rs.getInt(2));
+            System.out.println("PONTOS RETORNADOS DO BD    " + rs.getInt(2));
+            uDTO.setPontuacaoA1(rs.getInt(3));
+            uDTO.setPontuacaoA2(rs.getInt(4));
+            uDTO.setPontuacaoA3(rs.getInt(5));
+            uDTO.setPontuacaoA4(rs.getInt(6));
+            uDTO.setPontuacaoA5(rs.getInt(7));
+            uDTO.setPontuacaoA6(rs.getInt(8));
+            uDTO.setPontuacaoA7(rs.getInt(9));
+            uDTO.setPontuacaoA8(rs.getInt(10));
+            uDTO.setPontuacaoA9(rs.getInt(11));
         }
         
         return uDTO;
