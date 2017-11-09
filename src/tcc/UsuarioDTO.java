@@ -5,7 +5,32 @@ public class UsuarioDTO {
     private String nome, sobrenome, login, senha, sexo;
     private int id_usuario, pontuacaoSessao, pontuacaoGeral, pontuacaoA1, pontuacaoA2, pontuacaoA3, pontuacaoA4, pontuacaoA5, pontuacaoA6, pontuacaoA7, pontuacaoA8, pontuacaoA9;
     private int pontSessaoA1, pontSessaoA2, pontSessaoA3, pontSessaoA4, pontSessaoA5, pontSessaoA6, pontSessaoA7, pontSessaoA8, pontSessaoA9;
+    private int pontF, pontM, pontD;
 
+    public int getPontF() {
+        return pontF;
+    }
+
+    public void setPontF(int pontF) {
+        this.pontF = pontF;
+    }
+
+    public int getPontM() {
+        return pontM;
+    }
+
+    public void setPontM(int pontM) {
+        this.pontM = pontM;
+    }
+
+    public int getPontD() {
+        return pontD;
+    }
+
+    public void setPontD(int pontD) {
+        this.pontD = pontD;
+    }
+            
     public int getPontSessaoA1() {
         return pontSessaoA1;
     }

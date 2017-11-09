@@ -78,8 +78,7 @@ public class UsuarioDAO {
         Connection conn = DriverManager.getConnection(str);
         String sql = "UPDATE USUARIO SET PONTUACAO_GERAL = ?, PONTUACAO_AREA1 = ?, PONTUACAO_AREA2 = ?, "
                 + "PONTUACAO_AREA3 = ?, PONTUACAO_AREA4 = ?, PONTUACAO_AREA5 = ?, PONTUACAO_AREA6 = ?, PONTUACAO_AREA7 = ?, "
-                + "PONTUACAO_AREA8 = ?, PONTUACAO_AREA9 = ?";
-        
+                + "PONTUACAO_AREA8 = ?, PONTUACAO_AREA9 = ?, PONTUACAO_FACIL = ?, PONTUACAO_MEDIO = ?, PONTUACAO_DIFICIL = ?";
         PreparedStatement p = conn.prepareStatement(sql);
         
         p.setInt(1, usuario.getPontuacaoGeral());
@@ -92,6 +91,9 @@ public class UsuarioDAO {
         p.setInt(8, usuario.getPontuacaoA7());
         p.setInt(9, usuario.getPontuacaoA8());
         p.setInt(10, usuario.getPontuacaoA9());
+        p.setInt(11, usuario.getPontF());
+        p.setInt(12, usuario.getPontM());
+        p.setInt(13, usuario.getPontD());
 
         p.execute();
     }
@@ -103,7 +105,7 @@ public class UsuarioDAO {
         
         Connection conn = DriverManager.getConnection(str);
         String sql = "SELECT C.NOME, U.PONTUACAO_GERAL, U.PONTUACAO_AREA1, U.PONTUACAO_AREA2, U.PONTUACAO_AREA3, U.PONTUACAO_AREA4, U.PONTUACAO_AREA5, U.PONTUACAO_AREA6, U.PONTUACAO_AREA7," +
-                 " U.PONTUACAO_AREA8, U.PONTUACAO_AREA9 FROM CADASTRO C INNER JOIN USUARIO U ON C.ID_USUARIO = U.ID_USUARIO";
+                 " U.PONTUACAO_AREA8, U.PONTUACAO_AREA9, U.PONTUACAO_FACIL, U.PONTUACAO_MEDIO, U.PONTUACAO_DIFICIL FROM CADASTRO C INNER JOIN USUARIO U ON C.ID_USUARIO = U.ID_USUARIO";
         PreparedStatement p = conn.prepareStatement(sql);
         ResultSet rs = p.executeQuery();
         UsuarioDTO uDTO = null;
@@ -122,6 +124,9 @@ public class UsuarioDAO {
             uDTO.setPontuacaoA7(rs.getInt(9));
             uDTO.setPontuacaoA8(rs.getInt(10));
             uDTO.setPontuacaoA9(rs.getInt(11));
+            uDTO.setPontF(rs.getInt(12));
+            uDTO.setPontM(rs.getInt(13));
+            uDTO.setPontD(rs.getInt(14));
         }
         
         return uDTO;

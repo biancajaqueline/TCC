@@ -19,7 +19,7 @@ public class Desempenho extends javax.swing.JFrame {
     public Desempenho(UsuarioDTO usuario) {
         initComponents();
         this.usuario = usuario;
-
+        
         // Create Chart
         PieChart chart = new PieChartBuilder().width(800).height(600).title(getClass().getSimpleName()).build();
 
@@ -33,8 +33,9 @@ public class Desempenho extends javax.swing.JFrame {
         chart.addSeries("Platinum", 39);
         chart.addSeries("Copper", 17);
         chart.addSeries("Zinc", 40);
-
-        desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral());
+            
+        
+        desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral() + "   Facil:    " + usuario.getPontF() + "    Medio:   " + usuario.getPontM() + "   Difícil:   " + usuario.getPontD());
 
     }
 

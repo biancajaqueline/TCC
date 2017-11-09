@@ -288,6 +288,14 @@ public class Pergunta extends javax.swing.JFrame {
 
     private void proximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proximaActionPerformed
         if (Validacao.validaPergunta(alternativaA, alternativaB, alternativaC, alternativaD, alternativaE)) {
+            if (i == 0) {
+                try {
+                    usuario = uDAO.retornaInfoPontuação(usuario);
+                } catch (SQLException ex) {
+                    Mensagem.msgErro("Erro de conexão com o banco de dados.");
+                }
+            }
+
             int resp = questao.getAltCorreta();
             System.out.println("RESPOSTA RESP     " + resp);
 
@@ -295,13 +303,6 @@ public class Pergunta extends javax.swing.JFrame {
                 verificaResposta(resp);
             } catch (SQLException ex) {
                 Mensagem.msgErro("Erro de conexão com o banco de dados.");
-            }
-            if (i == 0) {
-                try {
-                    usuario = uDAO.retornaInfoPontuação(usuario);
-                } catch (SQLException ex) {
-                    Mensagem.msgErro("Erro de conexão com o banco de dados.");
-                }
             }
 
             if (i < 2) {
@@ -315,8 +316,25 @@ public class Pergunta extends javax.swing.JFrame {
                 }
             } else {
                 try {
+                    switch (nivel) {
+                        case 1:
+                            int n1 = usuario.getPontF();
+                            n1 = n1 + pontosSessao;
+                            usuario.setPontF(n1);
+                            break;
+                        case 2:
+                            int n2 = usuario.getPontM();
+                            n2 = n2 + pontosSessao;
+                            usuario.setPontM(n2);
+                            break;
+                        case 3:
+                            int n3 = usuario.getPontD();
+                            n3 = n3 + pontosSessao;
+                            usuario.setPontD(n3);
+                            break;
+                    }
                     uDAO.atualizaPontuação(usuario);
-                    DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario);
+                    DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario, nivel);
                     desempenhoUser.setVisible(true);
                     this.setVisible(false);
                 } catch (SQLException ex) {
@@ -355,7 +373,7 @@ public class Pergunta extends javax.swing.JFrame {
             System.out.println("pontos geral      " + pontosGeral);
 
             int area = questao.getArea();
-
+            
             switch (area) {
 
                 case 1:
@@ -439,6 +457,33 @@ public class Pergunta extends javax.swing.JFrame {
                     usuario.setPontSessaoA1(ps9);
                     break;
             }
+
+//            switch (nivel) {
+//
+//                case 1:
+//                    int n1 = usuario.getPontF();
+//                    n1++;
+//                    int pS = n1 + p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;
+//                    usuario.setPontF(pS);
+//                    int ns1 = usuario.getPontSessaoF();
+//                    ns1++;
+//                    usuario.setPontSessaoF(ns1);
+//
+//                case 2:
+//                    int n2 = usuario.getPontM();
+//                    n2++;
+//                    usuario.setPontF(n2);
+//                    int ns2 = usuario.getPontSessaoM();
+//                    ns2++;
+//                    usuario.setPontSessaoM(ns2);
+//                case 3:
+//                    int n3 = usuario.getPontD();
+//                    n3++;
+//                    usuario.setPontF(n3);
+//                    int ns3 = usuario.getPontSessaoD();
+//                    ns3++;
+//                    usuario.setPontSessaoD(ns3);
+//            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

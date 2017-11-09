@@ -6,18 +6,20 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 
 public class DesempenhoSessao extends javax.swing.JFrame {
     
     UsuarioDTO usuario;
+    int nivel;
+
     
-    public DesempenhoSessao(UsuarioDTO usuario) {
+    public DesempenhoSessao(UsuarioDTO usuario, int nivel) {
         initComponents();
         this.usuario = usuario;
+        this.nivel = nivel;
+        
         pontuacaoSessao.setText("pontuação:  " + usuario.getPontuacaoSessao());
     }
   

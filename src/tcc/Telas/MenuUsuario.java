@@ -7,8 +7,6 @@ package tcc.Telas;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
@@ -225,7 +223,7 @@ public class MenuUsuario extends javax.swing.JFrame {
             } else if (medio.isSelected()) {
                 escolha = 2;
                 questao.setNivel(2);
-            } else {
+            } else if (dificil.isSelected()){
                 escolha = 3;
                 questao.setNivel(3);
             }
