@@ -458,32 +458,6 @@ public class Pergunta extends javax.swing.JFrame {
                     break;
             }
 
-//            switch (nivel) {
-//
-//                case 1:
-//                    int n1 = usuario.getPontF();
-//                    n1++;
-//                    int pS = n1 + p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9;
-//                    usuario.setPontF(pS);
-//                    int ns1 = usuario.getPontSessaoF();
-//                    ns1++;
-//                    usuario.setPontSessaoF(ns1);
-//
-//                case 2:
-//                    int n2 = usuario.getPontM();
-//                    n2++;
-//                    usuario.setPontF(n2);
-//                    int ns2 = usuario.getPontSessaoM();
-//                    ns2++;
-//                    usuario.setPontSessaoM(ns2);
-//                case 3:
-//                    int n3 = usuario.getPontD();
-//                    n3++;
-//                    usuario.setPontF(n3);
-//                    int ns3 = usuario.getPontSessaoD();
-//                    ns3++;
-//                    usuario.setPontSessaoD(ns3);
-//            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

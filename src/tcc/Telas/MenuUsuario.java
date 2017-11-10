@@ -7,12 +7,15 @@ package tcc.Telas;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import org.jfree.ui.RefineryUtilities;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 import tcc.Validacao;
+import tcc.GraficoGeral;
 
 /**
  *
@@ -207,9 +210,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
     private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
-        Desempenho desempenhoUser = new Desempenho(usuario);
-        desempenhoUser.setVisible(true);
-        this.setVisible(false);
+      Desempenho menu = new Desempenho(usuario);
+        menu.setVisible(true);
+        this.setVisible(false); 
     }//GEN-LAST:event_desempenhoActionPerformed
 
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed

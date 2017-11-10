@@ -5,36 +5,22 @@
  */
 package tcc.Telas;
 
-import java.awt.Color;
 import java.sql.SQLException;
-import org.knowm.xchart.PieChart;
-import org.knowm.xchart.QuickChart;
-import org.knowm.xchart.SwingWrapper;
+import javax.swing.JFrame;
+import org.jfree.ui.RefineryUtilities;
+import tcc.GraficoGeral;
 import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
-import org.knowm.xchart.PieChartBuilder;
 
 public class Desempenho extends javax.swing.JFrame {
 
     public Desempenho(UsuarioDTO usuario) {
         initComponents();
         this.usuario = usuario;
-        
-        // Create Chart
-        PieChart chart = new PieChartBuilder().width(800).height(600).title(getClass().getSimpleName()).build();
+        GraficoGeral demo = new GraficoGeral("Desempenho Geral", usuario);
+        demo.setSize(560, 367);
+        RefineryUtilities.centerFrameOnScreen(demo);
 
-        // Customize Chart
-        Color[] sliceColors = new Color[]{new Color(224, 68, 14), new Color(230, 105, 62), new Color(236, 143, 110), new Color(243, 180, 159), new Color(246, 199, 182)};
-        chart.getStyler().setSeriesColors(sliceColors);
-
-        // Series
-        chart.addSeries("Gold", 24);
-        chart.addSeries("Silver", 21);
-        chart.addSeries("Platinum", 39);
-        chart.addSeries("Copper", 17);
-        chart.addSeries("Zinc", 40);
-            
-        
         desempenhoUsuario.setText("pontuação:  " + usuario.getPontuacaoGeral() + "   Facil:    " + usuario.getPontF() + "    Medio:   " + usuario.getPontM() + "   Difícil:   " + usuario.getPontD());
 
     }
@@ -72,16 +58,16 @@ public class Desempenho extends javax.swing.JFrame {
                         .addGap(54, 54, 54)
                         .addComponent(voltar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(425, 425, 425)
-                        .addComponent(desempenhoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(701, Short.MAX_VALUE))
+                        .addGap(522, 522, 522)
+                        .addComponent(desempenhoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(647, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(desempenhoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addContainerGap(395, Short.MAX_VALUE)
+                .addComponent(desempenhoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(256, 256, 256)
                 .addComponent(voltar)
                 .addGap(26, 26, 26))
         );
