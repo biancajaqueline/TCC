@@ -8,6 +8,8 @@ import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 import tcc.Validacao;
 import java.util.ArrayList;
+import org.jfree.ui.RefineryUtilities;
+import tcc.GráficoSessao;
 
 public class Pergunta extends javax.swing.JFrame {
 
@@ -334,9 +336,10 @@ public class Pergunta extends javax.swing.JFrame {
                             break;
                     }
                     uDAO.atualizaPontuação(usuario);
-                    DesempenhoSessao desempenhoUser = new DesempenhoSessao(usuario, nivel);
-                    desempenhoUser.setVisible(true);
-                    this.setVisible(false);
+                    GráficoSessao chart = new GráficoSessao("´Desempenho", "Desempenho da Sessão", usuario);
+                    chart.pack();
+                    RefineryUtilities.centerFrameOnScreen(chart);
+                    chart.setVisible(true);
                 } catch (SQLException ex) {
                     Mensagem.msgErro("Erro de conexão com o banco de dados.");
                 }
@@ -373,7 +376,7 @@ public class Pergunta extends javax.swing.JFrame {
             System.out.println("pontos geral      " + pontosGeral);
 
             int area = questao.getArea();
-            
+
             switch (area) {
 
                 case 1:

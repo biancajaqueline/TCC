@@ -9,55 +9,40 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame; 
 import org.jfree.ui.RefineryUtilities; 
 
+
+
 public class GráficoSessao extends ApplicationFrame {
-   public GráficoSessao ( String applicationTitle , String chartTitle )
-   {
-      super( applicationTitle );        
+    UsuarioDTO usuario;
+   public GráficoSessao (String applicationTitle, String chartTitle, UsuarioDTO usuario) {
+      super(applicationTitle); 
+      this.usuario = usuario;
       JFreeChart barChart = ChartFactory.createBarChart(
          chartTitle,           
-         "Category",            
-         "Score",            
+         "Categoria",            
+         "Pontos",            
          createDataset(),          
          PlotOrientation.VERTICAL,           
          true, true, false);
          
-      ChartPanel chartPanel = new ChartPanel( barChart );        
-      chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );        
+      ChartPanel chartPanel = new ChartPanel(barChart);        
+      chartPanel.setPreferredSize(new java.awt.Dimension(560 , 560) );        
       setContentPane( chartPanel ); 
    }
-   private CategoryDataset createDataset( )
-   {
-      final String fiat = "FIAT";        
-      final String audi = "AUDI";        
-      final String ford = "FORD";        
-      final String speed = "Speed";        
-      final String millage = "Millage";        
-      final String userrating = "User Rating";        
-      final String safety = "safety";        
-      final DefaultCategoryDataset dataset = 
-      new DefaultCategoryDataset( );  
+   private CategoryDataset createDataset() {
+              
+      final DefaultCategoryDataset dataset = new DefaultCategoryDataset( );  
 
-      dataset.addValue( 1.0 , fiat , speed );        
-      dataset.addValue( 3.0 , fiat , userrating );        
-      dataset.addValue( 5.0 , fiat , millage ); 
-      dataset.addValue( 5.0 , fiat , safety );           
-
-      dataset.addValue( 5.0 , audi , speed );        
-      dataset.addValue( 6.0 , audi , userrating );       
-      dataset.addValue( 10.0 , audi , millage );        
-      dataset.addValue( 4.0 , audi , safety );
-
-      dataset.addValue( 4.0 , ford , speed );        
-      dataset.addValue( 2.0 , ford , userrating );        
-      dataset.addValue( 3.0 , ford , millage );        
-      dataset.addValue( 6.0 , ford , safety );               
+      dataset.addValue(usuario.getPontSessaoA1() +.0 , "Química" , "Química" );        
+      dataset.addValue(usuario.getPontSessaoA2() +.0 , "Física" , "Física" );        
+      dataset.addValue(usuario.getPontSessaoA3() +.0 , "História" , "História" ); 
+      dataset.addValue(usuario.getPontSessaoA4() +.0 , "Geografia" , "Geografia" );                        
+      dataset.addValue(usuario.getPontSessaoA5() +.0 , "Biologia" , "Biologia" );                        
+      dataset.addValue(usuario.getPontSessaoA6() +.0 , "Sociologia" , "Sociologia" );                        
+      dataset.addValue(usuario.getPontSessaoA7() +.0 , "Filosofia" , "Filosofia" );                        
+      dataset.addValue(usuario.getPontSessaoA8() +.0 , "Matemática" , "Matemática" );                        
+      dataset.addValue(usuario.getPontSessaoA9() +.0 , "Português" , "Português" );                        
 
       return dataset; 
    }
-   public static void main(String[] args){
-      GráficoSessao chart = new GráficoSessao("Car Usage Statistics", "Which car do you like?");
-      chart.pack( );        
-      RefineryUtilities.centerFrameOnScreen( chart );        
-      chart.setVisible( true ); 
-   }
+
 }

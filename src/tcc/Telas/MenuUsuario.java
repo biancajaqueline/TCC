@@ -210,9 +210,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
     private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
-      Desempenho menu = new Desempenho(usuario);
-        menu.setVisible(true);
-        this.setVisible(false); 
+      GraficoGeral demo = new GraficoGeral("Desempenho", usuario);  
+      demo.setSize(560 ,367);    
+      RefineryUtilities.centerFrameOnScreen(demo);    
+      demo.setVisible(true); 
     }//GEN-LAST:event_desempenhoActionPerformed
 
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed
