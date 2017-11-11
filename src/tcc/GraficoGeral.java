@@ -17,6 +17,7 @@ public class GraficoGeral extends ApplicationFrame {
         super(title);
         this.usuario = usuario;
         setContentPane(createDemoPanel());
+        
     }
 
     private PieDataset createDataset() {

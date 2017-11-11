@@ -71,6 +71,7 @@ public class QuestaoDAO {
                     questaoDTO.setAlternativaD(rs.getString(5));
                     questaoDTO.setAlternativaE(rs.getString(6));
                     questaoDTO.setAltCorreta(rs.getInt(7));
+                    questaoDTO.setArea(area);
                     listaQuestoes.add(questaoDTO);
                 }
             }

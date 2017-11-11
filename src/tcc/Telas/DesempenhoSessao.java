@@ -6,23 +6,28 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
+import org.jfree.ui.RefineryUtilities;
+import tcc.GráficoSessao;
 import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 
 public class DesempenhoSessao extends javax.swing.JFrame {
-    
+
     UsuarioDTO usuario;
     int nivel;
 
-    
     public DesempenhoSessao(UsuarioDTO usuario, int nivel) {
         initComponents();
         this.usuario = usuario;
         this.nivel = nivel;
-        
+
+        GráficoSessao chart = new GráficoSessao("Desempenho", "Desempenho da Sessão", usuario);
+        chart.pack();
+        RefineryUtilities.centerFrameOnScreen(chart);
+        chart.setVisible(true);
         pontuacaoSessao.setText("pontuação:  " + usuario.getPontuacaoSessao());
     }
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,6 +47,7 @@ public class DesempenhoSessao extends javax.swing.JFrame {
 
         pontuacaoSessao.setEditable(false);
 
+        desempenho.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
         desempenho.setText("Ver desempenho geral");
         desempenho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,6 +55,7 @@ public class DesempenhoSessao extends javax.swing.JFrame {
             }
         });
 
+        menu.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
         menu.setText("Voltar ao menu");
         menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,30 +70,30 @@ public class DesempenhoSessao extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(189, 189, 189)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(desempenho))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(desempenho)
                         .addGap(385, 385, 385)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addGap(291, 291, 291)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 241, Short.MAX_VALUE)
                         .addComponent(pontuacaoSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(742, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(189, 189, 189)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
                         .addComponent(jLabel1)
                         .addGap(62, 62, 62)
                         .addComponent(pontuacaoSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(desempenho, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(desempenho, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(266, Short.MAX_VALUE))
         );
 
@@ -123,7 +130,7 @@ public class DesempenhoSessao extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Mensagem.msgErro("Erro de conexão com o banco de dados.");
         }
-        
+
     }//GEN-LAST:event_menuActionPerformed
 
 

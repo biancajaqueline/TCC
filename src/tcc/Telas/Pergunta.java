@@ -8,8 +8,6 @@ import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 import tcc.Validacao;
 import java.util.ArrayList;
-import org.jfree.ui.RefineryUtilities;
-import tcc.GráficoSessao;
 
 public class Pergunta extends javax.swing.JFrame {
 
@@ -336,10 +334,9 @@ public class Pergunta extends javax.swing.JFrame {
                             break;
                     }
                     uDAO.atualizaPontuação(usuario);
-                    GráficoSessao chart = new GráficoSessao("´Desempenho", "Desempenho da Sessão", usuario);
-                    chart.pack();
-                    RefineryUtilities.centerFrameOnScreen(chart);
-                    chart.setVisible(true);
+                    DesempenhoSessao desempenho = new DesempenhoSessao(usuario, nivel);
+                    desempenho.setVisible(true);
+                    this.setVisible(false);
                 } catch (SQLException ex) {
                     Mensagem.msgErro("Erro de conexão com o banco de dados.");
                 }
