@@ -5,7 +5,6 @@
  */
 package tcc;
 
-import java.awt.Button;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -41,7 +40,7 @@ public class GraficoAreaGeral extends ApplicationFrame {
                 true, true, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(560, 560));
+        chartPanel.setPreferredSize(new java.awt.Dimension(600, 600));
         return barChart;
     }
 

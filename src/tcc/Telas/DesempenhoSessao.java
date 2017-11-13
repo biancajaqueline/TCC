@@ -6,6 +6,8 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import org.jfree.ui.RefineryUtilities;
 import tcc.GráficoSessao;
@@ -19,6 +21,7 @@ public class DesempenhoSessao extends javax.swing.JFrame {
 
     public DesempenhoSessao(UsuarioDTO usuario, int nivel) {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         this.usuario = usuario;
         this.nivel = nivel;
         pontuacaoSessao.setBorder(null);
@@ -163,9 +166,14 @@ public class DesempenhoSessao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
-        Desempenho desempenhoUser = new Desempenho(usuario);
-        desempenhoUser.setVisible(true);
+        try {
+            Desempenho desempenhoUser = new Desempenho(usuario);
+            desempenhoUser.setVisible(true);
         this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DesempenhoSessao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_desempenhoActionPerformed
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
@@ -183,7 +191,7 @@ public class DesempenhoSessao extends javax.swing.JFrame {
     private void verGraficoDesempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGraficoDesempenhoActionPerformed
         JFrame frame = new JFrame("Desempenho por Área");
         GráficoSessao chart = new GráficoSessao("Desempenho", usuario);
-        chart.setSize(560, 367);
+        chart.setSize(600, 400);
         frame.add(chart.createDemoPanel());
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();

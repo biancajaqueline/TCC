@@ -7,6 +7,7 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu() {
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
     
     UsuarioDTO usuario;

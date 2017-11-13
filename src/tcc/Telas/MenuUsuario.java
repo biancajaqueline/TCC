@@ -5,22 +5,18 @@
  */
 package tcc.Telas;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import org.jfree.ui.RefineryUtilities;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
 import tcc.UsuarioDAO;
 import tcc.UsuarioDTO;
 import tcc.Util.Mensagem;
 import tcc.Validacao;
-import tcc.GraficoGeral;
 
-/**
- *
- * @author usuario
- */
 public class MenuUsuario extends javax.swing.JFrame {
     
     UsuarioDTO usuario;
@@ -28,17 +24,14 @@ public class MenuUsuario extends javax.swing.JFrame {
     int escolha = 0;
 
     public MenuUsuario(UsuarioDTO usuario) throws SQLException {
-        
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         bemVindo.setText("Bem Vindo, " + usuario.getNome());
+        bemVindo.setBorder(null);
         UsuarioDAO uDAO = new UsuarioDAO();
         usuario = uDAO.retornaInfoPontuação(usuario);
         this.usuario = usuario;
     }
-    
-   
-    
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -116,7 +109,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         bemVindo.setEditable(false);
         bemVindo.setBackground(new java.awt.Color(255, 153, 102));
         bemVindo.setFont(new java.awt.Font("Forte", 0, 36)); // NOI18N
-        bemVindo.setText("jTextField1");
+        bemVindo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        bemVindo.setText("nombre");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/tongue.png"))); // NOI18N
 
@@ -196,9 +190,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -210,9 +202,14 @@ public class MenuUsuario extends javax.swing.JFrame {
         this.setVisible(false);    }//GEN-LAST:event_sairActionPerformed
 
     private void desempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desempenhoActionPerformed
-      Desempenho desempenho = new Desempenho(usuario);
-        desempenho.setVisible(true);
+        try {
+            Desempenho desempenho = new Desempenho(usuario);
+            desempenho.setVisible(true);
         this.setVisible(false); 
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_desempenhoActionPerformed
 
     private void realizarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realizarProvaActionPerformed

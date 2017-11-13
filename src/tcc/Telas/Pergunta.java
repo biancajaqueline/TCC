@@ -1,5 +1,6 @@
 package tcc.Telas;
 
+import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.sql.SQLException;
 import tcc.QuestaoDAO;
 import tcc.QuestaoDTO;
@@ -19,7 +20,7 @@ public class Pergunta extends javax.swing.JFrame {
     int pontosSessao;
     UsuarioDAO uDAO = new UsuarioDAO();
     QuestaoDAO qDAO = new QuestaoDAO();
-    
+
     ArrayList<QuestaoDTO> questoes;
 
     public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao, ArrayList<QuestaoDTO> questoes) throws SQLException {
@@ -30,6 +31,7 @@ public class Pergunta extends javax.swing.JFrame {
         this.pontosSessao = pontosSessao;
         this.questoes = questoes;
         initComponents();
+        this.setExtendedState(MAXIMIZED_BOTH);
         questao = questoes.get(i);
         pergunta.setText(questao.getQuestao());
         respostaA.setText(questao.getAlternativaA());
@@ -374,6 +376,7 @@ public class Pergunta extends javax.swing.JFrame {
         int pontosGeral = usuario.getPontuacaoGeral();
 
         if (altCorreta == altEscolhida) {
+            Mensagem.msgAcerto("Você acertou!");
             pontosSessao++;
             pontosGeral++;
 
@@ -469,6 +472,27 @@ public class Pergunta extends javax.swing.JFrame {
                     break;
             }
 
+        } else {
+            String letra = "";
+            switch (altCorreta) {
+                case 1:
+                    letra = "A";
+                    break;
+                case 2:
+                    letra = "B";
+                    break;
+                case 3:
+                    letra = "C";
+                    break;
+                case 4:
+                    letra = "D";
+                    break;
+                case 5:
+                    letra = "E";
+                    break;
+            }
+            
+            Mensagem.msgErro("Você errou, a resposta correta é a letra " + letra);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

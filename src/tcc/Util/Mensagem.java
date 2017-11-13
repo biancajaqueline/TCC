@@ -13,6 +13,11 @@ public class Mensagem {
         JOptionPane.showMessageDialog(null, mensagem,
                 "Alerta", JOptionPane.WARNING_MESSAGE);
     }
+    
+    public static void msgAcerto(String mensagem) {
+        JOptionPane.showMessageDialog(null, mensagem,
+                "Acerto", JOptionPane.QUESTION_MESSAGE);
+    }
 
     public static void msgInfo(String mensagem) {
         JOptionPane.showMessageDialog(null, mensagem,
