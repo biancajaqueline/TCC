@@ -6,6 +6,8 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import org.jfree.ui.RefineryUtilities;
 import tcc.GraficoGeral;
 import tcc.UsuarioDTO;
@@ -14,16 +16,15 @@ import tcc.GraficoAreaGeral;
 
 public class Desempenho extends javax.swing.JFrame {
 
-    public Desempenho( UsuarioDTO usuario) {
+    public Desempenho(UsuarioDTO usuario) {
         initComponents();
         this.usuario = usuario;
-        
-        
+
         desempenhoUsuario.setText("Sua pontuação total:  " + usuario.getPontuacaoGeral());
         desempenhoFacil.setText("Pontuação do nível fácil:  " + usuario.getPontF());
         desempenhoMedio.setText("Pontuação do nível médio:  " + usuario.getPontM());
         desempenhoDificil.setText("Pontuação do nível difícil:  " + usuario.getPontD());
-        
+
     }
 
     UsuarioDTO usuario;
@@ -57,7 +58,7 @@ public class Desempenho extends javax.swing.JFrame {
         });
 
         desempenhoUsuario.setEditable(false);
-        desempenhoUsuario.setBackground(new java.awt.Color(0, 153, 153));
+        desempenhoUsuario.setBackground(new java.awt.Color(255, 153, 102));
         desempenhoUsuario.setFont(new java.awt.Font("Forte", 0, 24)); // NOI18N
 
         verGrafico.setBackground(new java.awt.Color(0, 102, 102));
@@ -70,15 +71,15 @@ public class Desempenho extends javax.swing.JFrame {
         });
 
         desempenhoFacil.setEditable(false);
-        desempenhoFacil.setBackground(new java.awt.Color(255, 204, 153));
+        desempenhoFacil.setBackground(new java.awt.Color(255, 153, 102));
         desempenhoFacil.setFont(new java.awt.Font("Harrington", 0, 24)); // NOI18N
 
         desempenhoMedio.setEditable(false);
-        desempenhoMedio.setBackground(new java.awt.Color(255, 204, 153));
+        desempenhoMedio.setBackground(new java.awt.Color(255, 153, 102));
         desempenhoMedio.setFont(new java.awt.Font("Harrington", 0, 24)); // NOI18N
 
         desempenhoDificil.setEditable(false);
-        desempenhoDificil.setBackground(new java.awt.Color(255, 204, 153));
+        desempenhoDificil.setBackground(new java.awt.Color(255, 153, 102));
         desempenhoDificil.setFont(new java.awt.Font("Harrington", 0, 24)); // NOI18N
 
         verGraficoArea.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
@@ -173,19 +174,27 @@ public class Desempenho extends javax.swing.JFrame {
     }//GEN-LAST:event_voltarActionPerformed
 
     private void verGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGraficoActionPerformed
+        JFrame frame = new JFrame("Desempenho por Área");
         GraficoGeral chart = new GraficoGeral("Desempenho Geral", usuario);
         chart.setSize(560, 367);
-        RefineryUtilities.centerFrameOnScreen(chart);
-        chart.setVisible(true);
-        chart.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        frame.add(chart.createDemoPanel());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        RefineryUtilities.centerFrameOnScreen(frame);
     }//GEN-LAST:event_verGraficoActionPerformed
 
+
     private void verGraficoAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGraficoAreaActionPerformed
-        GraficoAreaGeral chart = new GraficoAreaGeral("Desempenho", "Desempenho Geral por Area", usuario);
+        JFrame frame = new JFrame("Desempenho por Área");
+        GraficoAreaGeral chart = new GraficoAreaGeral("Desempenho", usuario);
         chart.setSize(560, 367);
-        RefineryUtilities.centerFrameOnScreen(chart);
-        chart.setVisible(true);
-        chart.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        frame.add(chart.createDemoPanel());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        RefineryUtilities.centerFrameOnScreen(frame);
+        
     }//GEN-LAST:event_verGraficoAreaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

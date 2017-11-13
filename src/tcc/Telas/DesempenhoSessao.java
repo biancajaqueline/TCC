@@ -6,6 +6,7 @@
 package tcc.Telas;
 
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import org.jfree.ui.RefineryUtilities;
 import tcc.GráficoSessao;
 import tcc.UsuarioDTO;
@@ -20,12 +21,10 @@ public class DesempenhoSessao extends javax.swing.JFrame {
         initComponents();
         this.usuario = usuario;
         this.nivel = nivel;
-
-        GráficoSessao chart = new GráficoSessao("Desempenho", "Desempenho da Sessão", usuario);
-        chart.pack();
-        RefineryUtilities.centerFrameOnScreen(chart);
-        chart.setVisible(true);
-        pontuacaoSessao.setText("pontuação:  " + usuario.getPontuacaoSessao());
+        pontuacaoSessao.setBorder(null);
+        pontuacaoSessao.setText("" + usuario.getPontuacaoSessao());
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -37,6 +36,10 @@ public class DesempenhoSessao extends javax.swing.JFrame {
         pontuacaoSessao = new javax.swing.JTextField();
         desempenho = new javax.swing.JButton();
         menu = new javax.swing.JButton();
+        verGraficoDesempenho = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +49,12 @@ public class DesempenhoSessao extends javax.swing.JFrame {
         jLabel1.setText("Fim do Teste!");
 
         pontuacaoSessao.setEditable(false);
+        pontuacaoSessao.setBackground(new java.awt.Color(0, 153, 153));
+        pontuacaoSessao.setFont(new java.awt.Font("Harrington", 1, 60)); // NOI18N
+        pontuacaoSessao.setForeground(new java.awt.Color(255, 102, 51));
+        pontuacaoSessao.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        desempenho.setBackground(new java.awt.Color(255, 153, 102));
         desempenho.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
         desempenho.setText("Ver desempenho geral");
         desempenho.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +63,7 @@ public class DesempenhoSessao extends javax.swing.JFrame {
             }
         });
 
+        menu.setBackground(new java.awt.Color(255, 153, 102));
         menu.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
         menu.setText("Voltar ao menu");
         menu.addActionListener(new java.awt.event.ActionListener() {
@@ -63,38 +72,76 @@ public class DesempenhoSessao extends javax.swing.JFrame {
             }
         });
 
+        verGraficoDesempenho.setBackground(new java.awt.Color(255, 153, 102));
+        verGraficoDesempenho.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
+        verGraficoDesempenho.setText("Ver gráfico de desempenho");
+        verGraficoDesempenho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verGraficoDesempenhoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Forte", 0, 36)); // NOI18N
+        jLabel2.setText("PONTOS");
+
+        jLabel3.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
+        jLabel3.setText("VOCÊ FEZ");
+
+        jLabel4.setFont(new java.awt.Font("Forte", 0, 18)); // NOI18N
+        jLabel4.setText("DO TOTAL DE 20");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(desempenho))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
+                        .addGap(703, 703, 703)
                         .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 241, Short.MAX_VALUE)
-                        .addComponent(pontuacaoSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(742, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(desempenho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(verGraficoDesempenho))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(380, 380, 380)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(326, 326, 326)
+                                .addComponent(pontuacaoSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(344, 344, 344)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))))))
+                .addContainerGap(1088, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(189, 189, 189)
+                .addGap(144, 144, 144)
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(62, 62, 62)
-                        .addComponent(pontuacaoSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pontuacaoSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addComponent(desempenho, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40)
-                        .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(266, Short.MAX_VALUE))
+                        .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(verGraficoDesempenho, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(281, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,12 +180,27 @@ public class DesempenhoSessao extends javax.swing.JFrame {
 
     }//GEN-LAST:event_menuActionPerformed
 
+    private void verGraficoDesempenhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verGraficoDesempenhoActionPerformed
+        JFrame frame = new JFrame("Desempenho por Área");
+        GráficoSessao chart = new GráficoSessao("Desempenho", usuario);
+        chart.setSize(560, 367);
+        frame.add(chart.createDemoPanel());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        RefineryUtilities.centerFrameOnScreen(frame);
+    }//GEN-LAST:event_verGraficoDesempenhoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton desempenho;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton menu;
     private javax.swing.JTextField pontuacaoSessao;
+    private javax.swing.JButton verGraficoDesempenho;
     // End of variables declaration//GEN-END:variables
 }

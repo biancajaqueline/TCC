@@ -5,6 +5,8 @@
  */
 package tcc;
 
+import java.awt.Button;
+import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -17,11 +19,21 @@ public class GraficoAreaGeral extends ApplicationFrame {
 
     UsuarioDTO usuario;
 
-    public GraficoAreaGeral(String applicationTitle, String chartTitle, UsuarioDTO usuario) {
+    public GraficoAreaGeral(String applicationTitle, UsuarioDTO usuario) {
         super(applicationTitle);
         this.usuario = usuario;
+
+        setContentPane(createDemoPanel());
+    }
+
+    public JPanel createDemoPanel() {
+        JFreeChart chart = createChart(createDataset());
+        return new ChartPanel(chart);
+    }
+
+    private JFreeChart createChart(CategoryDataset dataset) {
         JFreeChart barChart = ChartFactory.createBarChart(
-                chartTitle,
+                "Desempenho Geral por Área",
                 "Categoria",
                 "Pontos",
                 createDataset(),
@@ -30,7 +42,7 @@ public class GraficoAreaGeral extends ApplicationFrame {
 
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 560));
-        setContentPane(chartPanel);
+        return barChart;
     }
 
     private CategoryDataset createDataset() {
@@ -49,4 +61,5 @@ public class GraficoAreaGeral extends ApplicationFrame {
 
         return dataset;
     }
+
 }

@@ -1,5 +1,6 @@
 package tcc;
 
+import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -12,11 +13,14 @@ public class GráficoSessao extends ApplicationFrame {
 
     UsuarioDTO usuario;
 
-    public GráficoSessao(String applicationTitle, String chartTitle, UsuarioDTO usuario) {
+    public GráficoSessao(String applicationTitle, UsuarioDTO usuario) {
         super(applicationTitle);
         this.usuario = usuario;
+        setContentPane(createDemoPanel());
+    }
+    private JFreeChart createChart(CategoryDataset dataset) {
         JFreeChart barChart = ChartFactory.createBarChart(
-                chartTitle,
+                "Gráfico da Sessão",
                 "Categoria",
                 "Pontos",
                 createDataset(),
@@ -25,7 +29,12 @@ public class GráficoSessao extends ApplicationFrame {
 
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(600, 600));
-        setContentPane(chartPanel);
+        return barChart;
+    }
+    
+    public JPanel createDemoPanel() {
+        JFreeChart chart = createChart(createDataset());
+        return new ChartPanel(chart);
     }
 
     private CategoryDataset createDataset() {

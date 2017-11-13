@@ -19,6 +19,7 @@ public class Pergunta extends javax.swing.JFrame {
     int pontosSessao;
     UsuarioDAO uDAO = new UsuarioDAO();
     QuestaoDAO qDAO = new QuestaoDAO();
+    
     ArrayList<QuestaoDTO> questoes;
 
     public Pergunta(UsuarioDTO usuario, int nivel, int progresso, int i, int pontosSessao, ArrayList<QuestaoDTO> questoes) throws SQLException {
@@ -40,6 +41,11 @@ public class Pergunta extends javax.swing.JFrame {
         System.out.println("----------------------------------");
         System.out.println("RESPOSTA RESP     " + resp);
         System.out.println("TAMANHO DO ARRAY    " + questoes.size());
+        respostaA.setBorder(null);
+        respostaB.setBorder(null);
+        respostaC.setBorder(null);
+        respostaD.setBorder(null);
+        respostaE.setBorder(null);
         barraProgresso.setValue(progresso);
         progresso = progresso + 5;
         this.progresso = progresso;
@@ -86,26 +92,31 @@ public class Pergunta extends javax.swing.JFrame {
 
         alternativaA.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaA);
+        alternativaA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         alternativaA.setText("a)");
         alternativaA.setToolTipText("Opção A");
 
         alternativaB.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaB);
+        alternativaB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         alternativaB.setText("b)");
         alternativaB.setToolTipText("Opção B");
 
         alternativaC.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaC);
+        alternativaC.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         alternativaC.setText("c)");
         alternativaC.setToolTipText("Opção C");
 
         alternativaD.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaD);
+        alternativaD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         alternativaD.setText("d)");
         alternativaD.setToolTipText("Opção D");
 
         alternativaE.setBackground(new java.awt.Color(0, 153, 153));
         alterinativas.add(alternativaE);
+        alternativaE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         alternativaE.setText("e)");
         alternativaE.setToolTipText("Opção E");
 
@@ -125,7 +136,7 @@ public class Pergunta extends javax.swing.JFrame {
         pergunta.setEditable(false);
         pergunta.setBackground(new java.awt.Color(255, 204, 153));
         pergunta.setColumns(20);
-        pergunta.setFont(new java.awt.Font("Monospaced", 1, 13)); // NOI18N
+        pergunta.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         pergunta.setLineWrap(true);
         pergunta.setRows(5);
         pergunta.setText("pregunta");
@@ -145,23 +156,23 @@ public class Pergunta extends javax.swing.JFrame {
 
         respostaA.setEditable(false);
         respostaA.setBackground(new java.awt.Color(0, 153, 153));
-        respostaA.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        respostaA.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
 
         respostaB.setEditable(false);
         respostaB.setBackground(new java.awt.Color(0, 153, 153));
-        respostaB.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        respostaB.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
 
         respostaC.setEditable(false);
         respostaC.setBackground(new java.awt.Color(0, 153, 153));
-        respostaC.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        respostaC.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
 
         respostaD.setEditable(false);
         respostaD.setBackground(new java.awt.Color(0, 153, 153));
-        respostaD.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        respostaD.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
 
         respostaE.setEditable(false);
         respostaE.setBackground(new java.awt.Color(0, 153, 153));
-        respostaE.setFont(new java.awt.Font("Monospaced", 1, 12)); // NOI18N
+        respostaE.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
