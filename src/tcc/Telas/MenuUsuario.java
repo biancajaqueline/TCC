@@ -228,7 +228,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 questao.setNivel(3);
             }
 
-            int progresso = 5;
+            int progresso = 34;
             int i = 0;
             int pontos = 0;
             QuestaoDAO qDAO = new QuestaoDAO();

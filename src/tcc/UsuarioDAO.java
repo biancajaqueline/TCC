@@ -66,7 +66,6 @@ public class UsuarioDAO {
             usuarioDTO.setId_usuario(rs.getInt(1));
             usuarioDTO.setNome(rs.getString(2));
             usuarioDTO.setSenha(rs.getString(3));
-            System.out.println("IDDDD  " + rs.getInt(1));
         }
         return usuarioDTO;
     }

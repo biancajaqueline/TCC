@@ -43,7 +43,7 @@ public class QuestaoDAO {
     public ArrayList<QuestaoDTO> retornaProva(int nivel) throws SQLException {
         ArrayList<QuestaoDTO> listaQuestoes = new ArrayList();
         int area = 1;
-        int questoes = 2;
+        int questoes = 1;
         do {
             if (area > 7) {
                 questoes = 3;
