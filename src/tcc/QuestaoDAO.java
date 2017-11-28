@@ -43,7 +43,7 @@ public class QuestaoDAO {
     public ArrayList<QuestaoDTO> retornaProva(int nivel) throws SQLException {
         ArrayList<QuestaoDTO> listaQuestoes = new ArrayList();
         int area = 1;
-        int questoes = 1;
+        int questoes = 2;
         do {
             if (area > 7) {
                 questoes = 3;
@@ -61,7 +61,7 @@ public class QuestaoDAO {
                 ResultSet rs = p.executeQuery();
 
                 QuestaoDTO questaoDTO;
-                // não executa
+                
                 if (rs.next()) {
                     questaoDTO = new QuestaoDTO();
                     questaoDTO.setQuestao(rs.getString(1));
@@ -77,7 +77,7 @@ public class QuestaoDAO {
             }
             area++;
         } while (area < 10);
-
+        System.out.println("TAMANHO DO ARRAY    " + listaQuestoes.size());
         return listaQuestoes;
     }
 }

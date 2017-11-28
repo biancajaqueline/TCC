@@ -47,7 +47,7 @@ public class Pergunta extends javax.swing.JFrame {
         respostaD.setBorder(null);
         respostaE.setBorder(null);
         barraProgresso.setValue(progresso);
-        progresso = progresso + 34;
+        progresso = progresso + 5;
         this.progresso = progresso;
 
     }
@@ -309,7 +309,7 @@ public class Pergunta extends javax.swing.JFrame {
                 Mensagem.msgErro("Erro de conexão com o banco de dados.");
             }
 
-            if (i < 2) {
+            if (i < 19) {
                 try {
                     i++;
                     Pergunta pergunta = new Pergunta(usuario, nivel, progresso, i, pontosSessao, questoes);
